@@ -1,9 +1,8 @@
 import '@/styles/globals.css';
 import React from 'react';
-import NavBar from '@/ui/Navbar';
-import Footer from '@/ui/Footer';
 
-// Font files can be colocated inside of `pages`
+import Footer from '@/ui/Footer';
+import NavBar from '@/ui/Navbar';
 
 export default function RootLayout({
   children,
@@ -11,13 +10,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="dark">
-      <body className={`container space-y-8 md:space-y-16 overflow-y-scroll bg-gray-800 text-gray-100 font-winchester"`}>
-        <NavBar />
+    <html className="dark bg-degen">
+      <body className="font-winchester space-y-8 overflow-y-scroll text-gray-100 md:space-y-16">
+        <div className="container">
+          <NavBar />
 
-        {children}
+          {children}
 
-        <Footer />
+          <Footer />
+        </div>
       </body>
     </html>
   );

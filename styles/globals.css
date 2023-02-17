@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Winchester';
-    src: url('../public/fonts/WinchesterRegular.ttf');
-}
-
-@font-face {
     font-weight: 400;
-    font-family: 'Winchester';
+    font-family: 'Electro';
     font-style: normal;
-    src: local(''), url('../public/fonts/WinchesterRegular.ttf') format('ttf');
+    src: local(''), url('../public/fonts/electroharmonix.ttf') format('ttf');
 }
