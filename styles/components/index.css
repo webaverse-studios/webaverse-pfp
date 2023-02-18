@@ -1,0 +1,31 @@
+@layer components {
+  .parallelogram {
+    @apply h-full;
+
+    background: #0d1a21;
+    transform: skew(-20deg);
+
+    & > * {
+      transform: skew(20deg);
+    }
+  }
+
+  .degen-img {
+    @apply bottom-0 h-auto w-[50%] object-contain;
+
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0)
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0)
+    );
+  }
+
+  .social-icon {
+    @apply text-white text-opacity-50;
+  }
+}

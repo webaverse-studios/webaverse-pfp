@@ -1,10 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import './base/index.css';
+
+@import 'tailwindcss/components';
+@import './components/index.css';
+
+@import 'tailwindcss/utilities';
+@import './utilities/index.css';
 
 @font-face {
-    font-weight: 400;
-    font-family: 'Electro';
-    font-style: normal;
-    src: local(''), url('../public/fonts/electroharmonix.ttf') format('ttf');
+  font-weight: 400;
+  font-family: 'Electro';
+  font-style: normal;
+  src: local(''), url('../public/fonts/electroharmonix.ttf') format('ttf');
 }
+
+:root {
+  --header-height: theme(height.12);
+  --header-margin-desktop: theme(margin.8);
+}
+
+
+
+
