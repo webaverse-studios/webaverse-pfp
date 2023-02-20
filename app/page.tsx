@@ -1,23 +1,31 @@
+'use client';
+
 import Image from 'next/image';
 
+import { useState } from 'react';
+
+import { Button } from '@webaverse-studios/uikit';
+
 import degen from '@/public/images/img_degen.png';
+import MintDialog from '@/ui/MintDialog';
 import SocialBar from '@/ui/SocialBar';
 
-//-mt-[var(--header-height)]
-
 export default function Page() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
+
   return (
-    <main className="mx-auto mt-8 flex flex-col justify-center text-gray-100 lg:-mt-[(var(--header-height)+var(--header-margin-desktop))] lg:h-full lg:flex-row lg:justify-between">
+    <main className="mx-auto mt-8 flex flex-col justify-center text-gray-100 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
       <Image
         src={degen}
         alt="degen"
-        className="degen-img self-center 2xl:absolute ultra:w-[40%]"
-        width={200}
-        height={200}
+        width={960}
+        height={850}
+        className="degen-img self-center ultra:w-[40%] 2xl:absolute"
       />
 
-      <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg 2xl:ml-auto">
-        <h1 className="text-5xl font-bold leading-none sm:text-6xl">
+      <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg 2xl:ml-auto ">
+        <h1 className="title_glow text-5xl font-bold leading-none motion-safe:animate-pulse-slow sm:text-6xl">
           The Degens
         </h1>
 
@@ -29,14 +37,19 @@ export default function Page() {
           mauris commodo
         </p>
 
-        <button
+        <Button
+          fullWidth
           type="button"
-          className="rounded border bg-white px-20 py-2 text-lg font-semibold uppercase text-black dark:border-gray-100 lg:self-center"
+          onClick={handleOpen}
+          className="text-lg uppercase lg:self-center"
         >
           Claim
-        </button>
+        </Button>
+
         <SocialBar />
       </div>
+
+      <MintDialog open={open} handleOpen={handleOpen} />
     </main>
   );
 }

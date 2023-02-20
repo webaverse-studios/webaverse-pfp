@@ -54,13 +54,18 @@
         ],
         "pathGroups": [
           {
-            "pattern": "react**",
-            "group": "builtin",
+            "pattern": "next**",
+            "group": "external",
             "position": "before"
           },
           {
-            "pattern": "next**",
-            "group": "builtin",
+            "pattern": "next/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "react**",
+            "group": "external",
             "position": "before"
           },
           {

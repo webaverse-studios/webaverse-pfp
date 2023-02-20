@@ -8,7 +8,7 @@ export default function SocialBar() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
-          className="h-10 w-10 fill-current"
+          className="hover-opacity h-10 w-10 fill-current"
         >
           <path
             fill="currentColor"
@@ -22,7 +22,7 @@ export default function SocialBar() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 640 512"
-          className="h-10 w-10 fill-current"
+          className="hover-opacity h-10 w-10 fill-current"
         >
           <path
             fill="currentColor"

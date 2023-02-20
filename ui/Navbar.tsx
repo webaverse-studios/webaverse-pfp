@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
-
 import Image from 'next/image';
 
-import character from '@/public/images/character_image.png';
-import logo from '@/public/images/webaverse_logo.png';
+import React from 'react';
+
+import { Button } from '@webaverse-studios/uikit';
+
+import character from '@/public/images/icon/character_image.png';
+import logo from '@/public/images/logo/webaverse_logo.png';
 
 const NavBar = () => {
   return (
@@ -18,10 +20,11 @@ const NavBar = () => {
       >
         <Image
           src={logo}
-          alt="webaverse_logo"
           width={40}
           height={50}
+          alt="webaverse_logo"
           style={{ filter: 'brightness(0) invert(1)' }}
+          className="hover-opacity"
         />
       </a>
 
@@ -33,12 +36,9 @@ const NavBar = () => {
           alt="webaverse_character"
         />
 
-        <button
-          type="button"
-          className="self-center rounded border bg-white px-4 py-0.5 font-semibold uppercase text-black dark:border-gray-100"
-        >
+        <Button size="sm" color="white" variant="outlined">
           Conntect Wallet
-        </button>
+        </Button>
       </div>
     </nav>
   );

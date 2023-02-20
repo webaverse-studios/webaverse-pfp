@@ -1,0 +1,10 @@
+@layer utilities {
+  .hover-opacity {
+    @apply opacity-60 hover:opacity-100 hover:duration-200;
+  }
+
+  .title_glow {
+    text-shadow: 0 0 1px #fff, 0 0 20px #6699cc, 0 0 10px #6699cc,
+      0 0 1px #6699cc;
+  }
+}

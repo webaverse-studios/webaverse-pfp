@@ -1,26 +1,22 @@
+const withWT = require('@webaverse-studios/uikit').withWT;
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withWT({
   darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './page/**/*.{js,ts,jsx,tsx}',
     './ui/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@webaverse-studios/uikit/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     container: { center: true },
     screens: {
-      xxxs: '320px',
-      xs: '475px',
       ultra: '2520px',
       ...defaultTheme.screens,
     },
     extend: {
-      fontFamily: {
-        electro: ['Electro'],
-        sans: ['Electro', 'sans-serif'],
-      },
       // https://vercel.com/design/color
       colors: {
         vercel: {
@@ -32,15 +28,24 @@ module.exports = {
         },
       },
       backgroundImage: {
-        degen: "url('../public/images/bg_theDegens_2.png')",
+        degen: "url('../public/images/bg/bg_degen.png')",
+        'mint-modal': "url('../public/images/bg/bg_modal_frame.png')",
+      },
+      keyframes: {
+        pulse: {
+          '50%': {
+            opacity: '40%',
+          },
+        },
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s linear infinite',
       },
     },
   },
-  corePlugins: {
-    fontFamily: true,
-  },
+  corePlugins: { fontFamily: true },
   plugins: [
     require('@tailwindcss/typography'),
     require('@mertasan/tailwindcss-variables'),
   ],
-};
+});

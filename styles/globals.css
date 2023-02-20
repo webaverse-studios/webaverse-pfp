@@ -7,18 +7,15 @@
 @import 'tailwindcss/utilities';
 @import './utilities/index.css';
 
-@font-face {
-  font-weight: 400;
-  font-family: 'Electro';
-  font-style: normal;
-  src: local(''), url('../public/fonts/electroharmonix.ttf') format('ttf');
-}
+/* @import '@webaverse-studios/uikit/dist/style.css'; */
 
 :root {
   --header-height: theme(height.12);
   --header-margin-desktop: theme(margin.8);
+  --total-height: calc(var(--header-height) + var(--header-margin-desktop));
 }
 
-
-
-
+.test {
+  --height: calc(var(--header-height) + var(--header-margin-desktop));
+  margin-top: calc(var(--total-height) * -1);
+}

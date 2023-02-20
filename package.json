@@ -3,23 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "@next/font": "^13.1.6",
+    "@next/react-refresh-utils": "^13.1.6",
+    "@webaverse-studios/uikit": "^0.0.1",
     "next": "^13.1.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-refresh": "^0.12",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
-    "@mertasan/tailwindcss-variables": "^2.5.1",
-    "@next/react-refresh-utils": "^13.1.6",
+    "@mertasan/tailwindcss-variables": "^2.5.2",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
@@ -37,9 +42,10 @@
     "postcss-import": "^15.1.0",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
-    "react-refresh": "^0.14.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   },
-  "packageManager": "yarn@3.4.1"
+  "resolutions": {
+    "@webaverse-studios/uikit": "portal:/home/jlecoq/projects/webaverse/webaverse_commons"
+  }
 }

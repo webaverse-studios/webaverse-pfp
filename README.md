@@ -1,26 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Webaverse-Studios PFP
 
-## Getting Started
+## Setup
 
-First, run the development server:
+1. Setup base .yarnrc.yml file with auth token
 
 ```bash
-npm run dev
-# or
+<.yarnrc.yml>
+...
+npmRegistries:
+  //npm.pkg.github.com:
+    npmAuthToken: "<personal auth token>"
+...
+```
+
+2. Install dependencies and start development server:
+
+```bash
+yarn install
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Folder Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+**app**:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Folders are used to define routes. A route is a single path of nested folders, following the hierarchy from the root folder down to a final leaf folder that includes a page.js file.
+- Files are used to create UI that is shown for the route segment. See special files.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**pages**:
+
+- Next.js api routes are still defined here.
+
+**styles**:
+
+- All css definited within this folder. This is also the generation point for tailwind.
+
+**ui**:
+
+- Contains all UI components that are used within the app.
 
 ## Learn More
 
@@ -28,11 +47,18 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [App dir docs](https://beta.nextjs.org/docs/routing/fundamentals) - Next.js 13 introduced a new file-system based router built on top of React Server Components with support for layouts, nested routing, loading states, error handling, and more
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Libraries Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [yarn berry](https://github.com/yarnpkg/berry): Yarn is a modern package manager split into various packages
+- [nextjs](https://nextjs.org/): The React Framework for the Web
+- [tailwindcss](https://tailwindcss.com/): utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+Except where noted (below and/or in individual files), all code in this repository is dual-licensed under:
+
+- MIT License ([LICENSE-MIT](LICENSE-MIT) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT))
