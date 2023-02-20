@@ -13,6 +13,7 @@ module.exports = withWT({
   theme: {
     container: { center: true },
     screens: {
+      '3xl': '1920px',
       ultra: '2520px',
       ...defaultTheme.screens,
     },

@@ -1,4 +1,21 @@
-# Webaverse-Studios PFP
+<!-- markdownlint-disable -->
+
+<img src="public/images/screenshots/base_page.png" width=100% />
+
+<p align="center">
+    <a href="https://github.com/webaverse-studios/webaverse/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/webaverse-studios/webaverse" />
+    </a>
+    <a href="https://discord.gg/webaverse">
+        <img src="https://img.shields.io/discord/906925486049992755.svg?logo=discord" alt="chat on Discord">]
+    </a>
+    <a href="https://twitter.com/intent/follow?screen_name=webaverse">
+        <img src="https://img.shields.io/twitter/follow/webaverse?style=social&logo=twitter" alt="follow on Twitter">
+    </a>
+</p>
+
+<h1 align="center">Webaverse-Studios PFP</h1>
+<!-- markdownlint-enable -->
 
 ## Setup
 
@@ -49,7 +66,7 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 - [App dir docs](https://beta.nextjs.org/docs/routing/fundamentals) - Next.js 13 introduced a new file-system based router built on top of React Server Components with support for layouts, nested routing, loading states, error handling, and more
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub reposito](https://github.com/vercel/next.js/)[![All Contributors](https://img.shields.io/github/all-contributors/webaverse-studios/webaverse?color=ee8449&style=flat-square)](#contributors)ry - your feedback and contributions are welcome!
 
 ## Libraries Used
 
@@ -62,3 +79,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 Except where noted (below and/or in individual files), all code in this repository is dual-licensed under:
 
 - MIT License ([LICENSE-MIT](LICENSE-MIT) or [http://opensource.org/licenses/MIT](http://opensource.org/licenses/MIT))
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore-start -->
+
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

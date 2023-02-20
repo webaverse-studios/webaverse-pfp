@@ -1,0 +1,15 @@
+{
+  "projectName": "webaverse-pfp",
+  "projectOwner": "webaverse-studios",
+  "repoType": "github",
+  "repoHost": "https://github.com/webaverse-studios/webaverse-pfp",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "eslint",
+  "contributors": [],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}

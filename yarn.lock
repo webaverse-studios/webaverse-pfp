@@ -615,9 +615,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webaverse-studios/uikit@portal:/home/jlecoq/projects/webaverse/webaverse_commons::locator=webaverse-pfp%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@webaverse-studios/uikit@portal:/home/jlecoq/projects/webaverse/webaverse_commons::locator=webaverse-pfp%40workspace%3A."
+"@webaverse-studios/uikit@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@webaverse-studios/uikit@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40webaverse-studios%2Fuikit%2F0.0.1%2Ff4f930ebf57ec64080f7e782b204823083ecaeed"
   dependencies:
     "@floating-ui/react": ^0.19.2
     classnames: ^2.3.2
@@ -630,8 +630,9 @@ __metadata:
   peerDependencies:
     react: 18.x
     react-dom: 18.x
+  checksum: 1423e3b175c1b35ae27c7671f2781238e98820670abe912dba6814711135379ad48ee070b5eb15817bff7b489050e389ce8fdf787891f652c592d944c3b6e997
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "abbrev@npm:^1.0.0":
   version: 1.1.1
@@ -4256,9 +4257,9 @@ __metadata:
   linkType: hard
 
 "tailwind-merge@npm:^1.9.1":
-  version: 1.9.1
-  resolution: "tailwind-merge@npm:1.9.1"
-  checksum: 351d740d17c8d503d554adff6e53539761af10742bcdf032d2e40032c7be5b36a866df4d87f7ba5fd1d6e8ae01d55b89cf70e491b2f093c49f8a56380c45fa45
+  version: 1.10.0
+  resolution: "tailwind-merge@npm:1.10.0"
+  checksum: 80eb30d0300ca912b4b910460497a1d5fb4e697c3aedb01513e633973328684fa7ddf9bfb8550dca28176971c93bcb7ecb7eec3097c01d9c55c191563c693aab
   languageName: node
   linkType: hard
 

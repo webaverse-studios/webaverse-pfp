@@ -61,7 +61,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
           height={600}
           alt="modal_header"
           src={modalHeaderImg}
-          className="mint-head absolute top-0 h-auto w-full -translate-y-2/4"
+          className="mint-head absolute top-0 w-full -translate-y-2/4"
         />
       </DialogHeader>
 

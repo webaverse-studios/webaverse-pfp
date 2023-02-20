@@ -33,17 +33,21 @@
     @apply flex flex-col items-center justify-center !important;
     @apply bg-mint-modal bg-contain bg-center bg-no-repeat !important;
 
-    /* Width + Height */
-    @apply h-48 w-[100%] min-w-[95%] max-w-[95%] !important;
+    /* Height */
+    @apply h-48 !important;
     @apply xs:h-72 sm:h-1/3 md:h-[30%] lg:h-2/5 xl:h-2/5 !important;
     @apply ultra:h-3/5 !important;
-    @apply md:min-w-[75%] md:max-w-[75%] lg:min-w-[75%] lg:max-w-[75%] !important;
+
+    /* Width */
+    @apply w-[100%] min-w-[95%] max-w-[95%] !important;
+    @apply md:min-w-[75%] md:max-w-[75%] !important;
     @apply ultra:min-w-[60%] ultra:max-w-[60%] !important;
 
     .mint-amount {
       @apply mx-4 flex items-center justify-center p-2 text-7xl;
       @apply sm:text-8xl ultra:text-9xl;
-      @apply w-full max-w-[35%] sm:max-w-[30%] xl:max-w-[25%] 2xl:max-w-[20%] ultra:max-w-[5%] !important;
+      @apply w-full max-w-[25%] md:max-w-[20%] xl:max-w-[15%] 3xl:max-w-[10%] !important;
+      @apply ultra:max-w-[15%] !important;
     }
 
     .mint-button {
@@ -55,13 +59,8 @@
 
     .mint-head {
       @apply max-w-[20%];
-      @apply xs:max-w-[25%] sm:max-w-[20%] 2xl:max-w-[15%];
-
-      @media (min-width: 2000px) {
-        @apply max-w-[10%];
-      }
-
-      @apply ultra:max-w-[20%];
+      @apply xl:max-w-[15%] 2xl:max-w-[12%];
+      @apply ultra:max-w-[15%];
     }
   }
 }
