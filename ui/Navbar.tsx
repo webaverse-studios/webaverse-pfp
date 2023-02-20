@@ -29,12 +29,7 @@ const NavBar = () => {
       </a>
 
       <div className="parallelogram sm:max-w-1/2 md:max-w-1/3 lg:max-w-1/5 flex items-center justify-center gap-4 xs:w-full xs:max-w-xs">
-        <Image
-          width={50}
-          height={50}
-          src={character}
-          alt="webaverse_character"
-        />
+        <Image width={50} height={50} src={character} alt="webaverse_character" />
 
         <Button size="sm" color="white" variant="outlined">
           Conntect Wallet

@@ -30,11 +30,9 @@ export default function Page() {
         </h1>
 
         <p className="mt-6 mb-8 text-lg sm:mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Et
-          ultrices neque ornare aenean euismod elementum nisi. Elementum
-          facilisis leo vel fringilla est ullamcorper eget nulla. Sit amet
-          mauris commodo
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Et ultrices neque ornare aenean euismod elementum nisi.
+          Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Sit amet mauris commodo
         </p>
 
         <Button

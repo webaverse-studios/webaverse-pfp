@@ -4,22 +4,10 @@ import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
 
 import Image from 'next/image';
 
-import {
-  forwardRef,
-  MouseEventHandler,
-  ReactNode,
-  SVGAttributes,
-  useState,
-} from 'react';
+import { forwardRef, MouseEventHandler, ReactNode, SVGAttributes, useState } from 'react';
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
-import {
-  Button,
-  Dialog,
-  DialogFooter,
-  DialogHeader,
-  DialogBody,
-} from '@webaverse-studios/uikit';
+import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
 
 import modalHeaderImg from '@/public/images/modal_head.png';
 
@@ -28,11 +16,7 @@ export interface MintDialogProps {
   handleOpen: DialogHandler;
 }
 
-const MintButton = ({
-  children,
-  className,
-  ...props
-}: Omit<ButtonProps, 'ref'>) => {
+const MintButton = ({ children, className, ...props }: Omit<ButtonProps, 'ref'>) => {
   console.log(`mint-button ${className}`);
   return (
     <Button variant="text" className={`mint-button ${className}`} {...props}>
@@ -80,12 +64,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       </DialogBody>
 
       <DialogFooter className="justify-center  p-0">
-        <Button
-          size="lg"
-          color="white"
-          onClick={handleOpen}
-          className="mx-1 w-24 sm:w-48 2xl:w-60"
-        >
+        <Button size="lg" color="white" onClick={handleOpen} className="mx-1 w-24 sm:w-48 2xl:w-60">
           Close
         </Button>
 
