@@ -13,7 +13,7 @@ module.exports = withWT({
     container: { center: true },
     extend: {
       animation: {
-        'pulse-slow': 'pulse 3s linear infinite',
+        'pulse-slow': 'pulse 6s linear infinite',
       },
       backgroundImage: {
         degen: "url('../public/images/bg/bg_degen.png')",
@@ -32,7 +32,7 @@ module.exports = withWT({
       keyframes: {
         pulse: {
           '50%': {
-            opacity: '40%',
+            opacity: '75%',
           },
         },
       },

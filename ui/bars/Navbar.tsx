@@ -11,7 +11,7 @@ import logo from '@/public/images/logo/webaverse_logo.png';
 
 const NavBar = () => {
   return (
-    <nav className="container mx-auto mt-4 flex h-12 justify-between md:mt-[var(--header-margin-desktop)]">
+    <nav className="container relative z-[999] mx-auto mt-4 flex h-12 justify-between md:mt-[var(--header-margin-desktop)]">
       <a
         rel="noopener noreferrer"
         href="#"
@@ -31,7 +31,7 @@ const NavBar = () => {
       <div className="parallelogram flex w-60 items-center justify-center gap-4">
         <Image width={50} height={50} src={character} alt="webaverse_character" />
 
-        <Button size="sm" color="white" variant="outlined">
+        <Button size="sm" color="white" variant="filled">
           Conntect Wallet
         </Button>
       </div>

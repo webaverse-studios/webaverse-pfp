@@ -15,16 +15,8 @@ export default function Page() {
   const handleOpen = () => setOpen(!open);
 
   return (
-    <main className="mx-auto mt-4 flex flex-col justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
-      <Image
-        src={degen}
-        alt="degen"
-        width={960}
-        height={850}
-        className="degen-img bottom-0 w-[75%] self-center object-contain xs:w-[65%] ultra:w-[40%] sm:w-[50%] md:w-[45%] 2xl:absolute"
-      />
-
-      <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg 2xl:ml-auto ">
+    <main className="relative mx-auto mt-4 flex flex-col-reverse justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
+      <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg">
         <h1 className="title_glow text-5xl font-bold leading-none motion-safe:animate-pulse-slow sm:text-6xl">
           The Degens
         </h1>
@@ -46,6 +38,14 @@ export default function Page() {
 
         <SocialBar />
       </div>
+
+      <Image
+        src={degen}
+        alt="degen"
+        width={900}
+        height={850}
+        className="degen-img right-0 bottom-0 self-center object-contain opacity-[85%] sm:w-[600px] xl:w-[700px] 2xl:absolute 2xl:w-[900px]"
+      />
 
       <MintDialog open={open} handleOpen={handleOpen} />
     </main>
