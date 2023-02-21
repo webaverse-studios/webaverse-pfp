@@ -10,23 +10,13 @@
     }
   }
 
-  .degen-img {
-    @apply bottom-0 h-auto w-[50%] object-contain;
-
-    mask-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0)
-    );
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1) 85%,
-      rgba(0, 0, 0, 0)
-    );
-  }
-
   .social-icon {
     @apply text-white text-opacity-50;
+  }
+
+  .degen-img {
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
   }
 
   .degen-modal {
@@ -35,32 +25,30 @@
 
     /* Height */
     @apply h-48 !important;
-    @apply xs:h-72 sm:h-1/3 md:h-[30%] lg:h-2/5 xl:h-2/5 !important;
-    @apply ultra:h-3/5 !important;
+    @apply xs:h-64 sm:h-72 md:h-80 lg:h-96 xl:h-2/5 !important;
 
     /* Width */
-    @apply w-[100%] min-w-[95%] max-w-[95%] !important;
-    @apply md:min-w-[75%] md:max-w-[75%] !important;
-    @apply ultra:min-w-[60%] ultra:max-w-[60%] !important;
+    @apply w-full min-w-[20rem] max-w-[20rem] !important;
+    @apply xs:min-w-[25rem] xs:max-w-[25rem] !important;
+    @apply sm:min-w-[30rem] sm:max-w-[30rem] !important;
+    @apply lg:min-w-[40rem] lg:max-w-[40rem] !important;
+    @apply xl:min-w-[45rem] xl:max-w-[45rem] !important;
+    @apply ultra:min-w-[50rem] ultra:max-w-[50rem] !important;
 
     .mint-amount {
-      @apply mx-4 flex items-center justify-center p-2 text-7xl;
-      @apply sm:text-8xl ultra:text-9xl;
-      @apply w-full max-w-[25%] md:max-w-[20%] xl:max-w-[15%] 3xl:max-w-[10%] !important;
-      @apply ultra:max-w-[15%] !important;
+      @apply mx-4 flex items-center justify-center p-2 text-4xl;
+      @apply h-12 w-28;
+      @apply sm:h-16 sm:w-32 sm:text-5xl;
+      @apply xl:h-20 xl:w-40 xl:text-6xl;
     }
 
-    .mint-button {
-      @apply bg-transparent p-0;
-      & > svg {
-        @apply sm:h-24 sm:w-24;
-      }
+    .mint-amount-btn {
+      @apply h-8 w-8 text-white sm:h-12 sm:w-12;
     }
 
-    .mint-head {
-      @apply max-w-[20%];
-      @apply xl:max-w-[15%] 2xl:max-w-[12%];
-      @apply ultra:max-w-[15%];
+    .mint-footer-btn {
+      @apply mx-1 w-24;
+      @apply sm:text-base md:h-10 md:w-36 xl:text-lg;
     }
   }
 }

@@ -4,7 +4,7 @@ import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
 
 import Image from 'next/image';
 
-import { forwardRef, MouseEventHandler, ReactNode, SVGAttributes, useState } from 'react';
+import { useState } from 'react';
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
@@ -17,9 +17,8 @@ export interface MintDialogProps {
 }
 
 const MintButton = ({ children, className, ...props }: Omit<ButtonProps, 'ref'>) => {
-  console.log(`mint-button ${className}`);
   return (
-    <Button variant="text" className={`mint-button ${className}`} {...props}>
+    <Button variant="text" className={`bg-transparent p-0 ${className}`} {...props}>
       {children}
     </Button>
   );
@@ -37,41 +36,49 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       transparent
       open={open}
       handler={handleOpen}
-      className="degen-modal color-[#05C4B5]"
+      className="degen-modal color-[#05C4B5] m-0"
     >
-      <DialogHeader className="justify-center p-0">
+      <DialogHeader className="absolute top-0 z-10 -translate-y-2/4 justify-center  p-0">
         <Image
           width={600}
           height={600}
           alt="modal_header"
           src={modalHeaderImg}
-          className="mint-head absolute top-0 w-full -translate-y-2/4"
+          className="w-20 md:w-24 xl:w-28"
         />
       </DialogHeader>
 
-      <DialogBody className="flex w-full items-center justify-center p-0 text-center text-white xs:my-8">
+      <DialogBody
+        className="w-[85%] p-0 pt-10 text-center font-tt-square text-sm font-thin text-white 
+          xs:w-4/5 xs:text-base sm:w-2/3 sm:p-0 sm:text-xl
+          md:w-2/3 lg:w-3/4 lg:text-3xl"
+      >
+        <span>Select the number of The Degens that you would like to mint:</span>
+      </DialogBody>
+
+      <DialogBody className="m-2 flex w-full items-center justify-center p-0 text-center font-tt-square text-white lg:p-2 xl:p-4">
         <MintButton onClick={subtractDegen}>
-          <MinusSmallIcon className="h-8 w-8 text-white  xs:h-16 xs:w-16" />
+          <MinusSmallIcon className="mint-amount-btn" />
         </MintButton>
 
-        <div className="mint-amount h-3/4 bg-[#020406] text-[#05C4B5] xs:h-full">
-          {mintedDegens}
+        <div className="mint-amount bg-[#020406] font-tt-square font-bold text-[#05C4B5] xs:h-full">
+          <span>{mintedDegens}</span>
         </div>
 
         <MintButton onClick={addDegen}>
-          <PlusSmallIcon className="h-8 w-8 text-white xs:h-16 xs:w-16" />
+          <PlusSmallIcon className="mint-amount-btn" />
         </MintButton>
       </DialogBody>
 
-      <DialogFooter className="justify-center  p-0">
-        <Button size="lg" color="white" onClick={handleOpen} className="mx-1 w-24 sm:w-48 2xl:w-60">
+      <DialogFooter className="m-2 justify-center p-0 font-tt-square lg:p-2 xl:p-4">
+        <Button size="sm" color="white" onClick={handleOpen} className="mint-footer-btn">
           Close
         </Button>
 
         <Button
-          size="lg"
+          size="sm"
           color="green"
-          className="mx-1 w-24 sm:w-48 2xl:w-60"
+          className="mint-footer-btn"
           onClick={() => {
             alert('You Minted!');
           }}

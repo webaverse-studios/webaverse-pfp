@@ -1,5 +1,4 @@
 const withWT = require('@webaverse-studios/uikit').withWT;
-const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withWT({
@@ -12,12 +11,14 @@ module.exports = withWT({
   ],
   theme: {
     container: { center: true },
-    screens: {
-      '3xl': '1920px',
-      ultra: '2520px',
-      ...defaultTheme.screens,
-    },
     extend: {
+      animation: {
+        'pulse-slow': 'pulse 3s linear infinite',
+      },
+      backgroundImage: {
+        degen: "url('../public/images/bg/bg_degen.png')",
+        'mint-modal': "url('../public/images/bg/bg_modal_frame.png')",
+      },
       // https://vercel.com/design/color
       colors: {
         vercel: {
@@ -28,10 +29,6 @@ module.exports = withWT({
           violet: '#7928CA',
         },
       },
-      backgroundImage: {
-        degen: "url('../public/images/bg/bg_degen.png')",
-        'mint-modal': "url('../public/images/bg/bg_modal_frame.png')",
-      },
       keyframes: {
         pulse: {
           '50%': {
@@ -39,14 +36,15 @@ module.exports = withWT({
           },
         },
       },
-      animation: {
-        'pulse-slow': 'pulse 3s linear infinite',
+      screens: {
+        '3xl': '1920px',
+        ultra: '2520px',
+      },
+      fontFamily: {
+        body: ['TT-Squares', 'sans-serif'],
       },
     },
   },
   corePlugins: { fontFamily: true },
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@mertasan/tailwindcss-variables'),
-  ],
+  plugins: [require('@tailwindcss/typography'), require('@mertasan/tailwindcss-variables')],
 });

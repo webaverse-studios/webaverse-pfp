@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.16",
     "@next/font": "^13.1.6",
     "@next/react-refresh-utils": "^13.1.6",
-    "@webaverse-studios/uikit": "^0.0.1",
+    "@webaverse-studios/uikit": "^0.0.4",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -7,21 +7,21 @@ import { useState } from 'react';
 import { Button } from '@webaverse-studios/uikit';
 
 import degen from '@/public/images/img_degen.png';
-import MintDialog from '@/ui/MintDialog';
-import SocialBar from '@/ui/SocialBar';
+import SocialBar from '@/ui/bars/SocialBar';
+import MintDialog from '@/ui/dialog/MintDialog';
 
 export default function Page() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   return (
-    <main className="mx-auto mt-8 flex flex-col justify-center text-gray-100 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
+    <main className="mx-auto mt-4 flex flex-col justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
       <Image
         src={degen}
         alt="degen"
         width={960}
         height={850}
-        className="degen-img self-center ultra:w-[40%] 2xl:absolute"
+        className="degen-img bottom-0 w-[75%] self-center object-contain xs:w-[65%] ultra:w-[40%] sm:w-[50%] md:w-[45%] 2xl:absolute"
       />
 
       <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg 2xl:ml-auto ">
@@ -30,10 +30,9 @@ export default function Page() {
         </h1>
 
         <p className="mt-6 mb-8 text-lg sm:mb-12">
-          We are the Degens. Join us! The future of the open metaverse is in our
-          hands! Let&apos;s forge a world that&apos;s free, equitable, and
-          connected. Band together in a spirit of collaboration and innovation
-          and we will seize the reins of our virtual destiny today!
+          We are the Degens. Join us! The future of the open metaverse is in our hands! Let&apos;s
+          forge a world that&apos;s free, equitable, and connected. Band together in a spirit of
+          collaboration and innovation and we will seize the reins of our virtual destiny today!
         </p>
 
         <Button

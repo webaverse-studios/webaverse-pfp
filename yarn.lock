@@ -677,22 +677,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webaverse-studios/uikit@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@webaverse-studios/uikit@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40webaverse-studios%2Fuikit%2F0.0.1%2Ff4f930ebf57ec64080f7e782b204823083ecaeed"
+"@webaverse-studios/uikit@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "@webaverse-studios/uikit@npm:0.0.4::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40webaverse-studios%2Fuikit%2F0.0.4%2Fcc199ee8cb64abcedb495fcada9301b50a315155"
   dependencies:
     "@floating-ui/react": ^0.19.2
     classnames: ^2.3.2
     deepmerge: ^4.3.0
-    framer-motion: ^9.0.4
+    framer-motion: ^9.0.7
     prop-types: ^15.8.1
     react: 18.x
     react-dom: 18.x
-    tailwind-merge: ^1.9.1
+    tailwind-merge: ^1.10.0
   peerDependencies:
     react: 18.x
     react-dom: 18.x
-  checksum: 1423e3b175c1b35ae27c7671f2781238e98820670abe912dba6814711135379ad48ee070b5eb15817bff7b489050e389ce8fdf787891f652c592d944c3b6e997
+  checksum: 7ae24824f5bd29e88b0ee13d92e871e34d275492076166814297628f5b54262507ee799e6b328026c98dbb7656c116f92cfd2eec9feb6f95fd09c01a9f81601b
   languageName: node
   linkType: hard
 
@@ -2130,9 +2130,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^9.0.4":
-  version: 9.0.4
-  resolution: "framer-motion@npm:9.0.4"
+"framer-motion@npm:^9.0.7":
+  version: 9.0.7
+  resolution: "framer-motion@npm:9.0.7"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": ^10.15.3
@@ -2144,7 +2144,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 9ef23d81c78785dd2f7f278bad133d96c22fd3a9dcc310521ea220873b0a923ca927dc2d3e8000e221edfcc5bfd6272f752435472e3a8f9b1ef476202ede1ce2
+  checksum: f9ef0facc708cc934345c192c6bad11fee38562df07a8d2928502bc61af6133fdd19eb24ee10b24bd90689447c1fcce27087b4914f33ed7268984d5792e6373c
   languageName: node
   linkType: hard
 
@@ -4682,7 +4682,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^1.9.1":
+"tailwind-merge@npm:^1.10.0":
   version: 1.10.0
   resolution: "tailwind-merge@npm:1.10.0"
   checksum: 80eb30d0300ca912b4b910460497a1d5fb4e697c3aedb01513e633973328684fa7ddf9bfb8550dca28176971c93bcb7ecb7eec3097c01d9c55c191563c693aab
@@ -4978,7 +4978,7 @@ __metadata:
     "@types/react-dom": ^18.0.11
     "@typescript-eslint/eslint-plugin": ^5.53.0
     "@typescript-eslint/parser": ^5.53.0
-    "@webaverse-studios/uikit": ^0.0.1
+    "@webaverse-studios/uikit": ^0.0.4
     autoprefixer: ^10.4.13
     eslint: ^8
     eslint-config-next: latest
