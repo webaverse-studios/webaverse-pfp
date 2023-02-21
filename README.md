@@ -3,8 +3,8 @@
 <img src="public/images/screenshots/base_page.png" width=100% />
 
 <p align="center">
-    <a href="https://github.com/webaverse-studios/webaverse/graphs/contributors" alt="Contributors">
-        <img src="https://img.shields.io/github/contributors/webaverse-studios/webaverse" />
+    <a href="https://github.com/webaverse-studios/webaverse-pfp/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/webaverse-studios/webaverse-pfp" />
     </a>
     <a href="https://discord.gg/webaverse">
         <img src="https://img.shields.io/discord/906925486049992755.svg?logo=discord" alt="chat on Discord">]

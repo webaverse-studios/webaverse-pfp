@@ -30,9 +30,10 @@ export default function Page() {
         </h1>
 
         <p className="mt-6 mb-8 text-lg sm:mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Et ultrices neque ornare aenean euismod elementum nisi.
-          Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Sit amet mauris commodo
+          We are the Degens. Join us! The future of the open metaverse is in our
+          hands! Let&apos;s forge a world that&apos;s free, equitable, and
+          connected. Band together in a spirit of collaboration and innovation
+          and we will seize the reins of our virtual destiny today!
         </p>
 
         <Button
