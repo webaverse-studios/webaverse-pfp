@@ -677,9 +677,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@webaverse-studios/uikit@npm:^0.0.4":
-  version: 0.0.4
-  resolution: "@webaverse-studios/uikit@npm:0.0.4::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40webaverse-studios%2Fuikit%2F0.0.4%2Fcc199ee8cb64abcedb495fcada9301b50a315155"
+"@webaverse-studios/uikit@npm:^0.0.5":
+  version: 0.0.5
+  resolution: "@webaverse-studios/uikit@npm:0.0.5::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40webaverse-studios%2Fuikit%2F0.0.5%2F6c5a662cc370e83ffda0f633bb77d2e10410c292"
   dependencies:
     "@floating-ui/react": ^0.19.2
     classnames: ^2.3.2
@@ -692,7 +692,7 @@ __metadata:
   peerDependencies:
     react: 18.x
     react-dom: 18.x
-  checksum: 7ae24824f5bd29e88b0ee13d92e871e34d275492076166814297628f5b54262507ee799e6b328026c98dbb7656c116f92cfd2eec9feb6f95fd09c01a9f81601b
+  checksum: 90ae53e533a3a738e053cdcbb7cd42f5346fe1a1e49e37a3f422a16b44c3dd131b8e9153f037d47f70ea5760280111fec62d9e8afba34ce812f8c3fcd167ee9e
   languageName: node
   linkType: hard
 
@@ -4978,7 +4978,7 @@ __metadata:
     "@types/react-dom": ^18.0.11
     "@typescript-eslint/eslint-plugin": ^5.53.0
     "@typescript-eslint/parser": ^5.53.0
-    "@webaverse-studios/uikit": ^0.0.4
+    "@webaverse-studios/uikit": ^0.0.5
     autoprefixer: ^10.4.13
     eslint: ^8
     eslint-config-next: latest
