@@ -7,15 +7,11 @@
 @import 'tailwindcss/utilities';
 @import './utilities/index.css';
 
-@import '@webaverse-studios/uikit/dist/style.css';
-
 :root {
+  --modal-head-size: theme(width.24);
+  --modal-head-offset: calc(theme(padding[2.5]) + (var(--modal-head-size) * 0.5));
+
   --header-height: theme(height.12);
   --header-margin-desktop: theme(margin.8);
   --total-height: calc(var(--header-height) + var(--header-margin-desktop));
-}
-
-.test {
-  --height: calc(var(--header-height) + var(--header-margin-desktop));
-  margin-top: calc(var(--total-height) * -1);
 }

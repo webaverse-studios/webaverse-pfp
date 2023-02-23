@@ -15,7 +15,7 @@ export default function SocialBar() {
           src={twitterIcon}
           alt="twitter"
           width={50}
-          className="hover-opacity fill-current opacity-30 shadow-lg shadow-blue-500/50"
+          className="hover-opacity title_glow fill-current opacity-30 shadow-lg shadow-blue-500/50 hover:motion-safe:animate-pulse-low"
         />
       </a>
 
@@ -25,7 +25,7 @@ export default function SocialBar() {
           src={discordIcon}
           alt="discord"
           width={50}
-          className="hover-opacity fill-current opacity-30 shadow-lg shadow-indigo-500/50"
+          className="hover-opacity title_glow fill-current opacity-30 shadow-lg shadow-indigo-500/50 hover:motion-safe:animate-pulse-low"
         />
       </a>
 

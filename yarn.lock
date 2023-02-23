@@ -4051,6 +4051,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rambdax@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "rambdax@npm:9.0.0"
+  checksum: 9ce9fae66773e57b466106dd3fd4216a759fc8c98edb039224253ded11326ed721e81ad216ea6a50da6b42c922b0c3d702026e41f0555925a688498afdcbc230
+  languageName: node
+  linkType: hard
+
 "rc@npm:^1.2.7":
   version: 1.2.8
   resolution: "rc@npm:1.2.8"
@@ -4996,6 +5003,7 @@ __metadata:
     postcss-import: ^15.1.0
     prettier: ^2.8.4
     prettier-plugin-tailwindcss: ^0.2.3
+    rambdax: ^9.0.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-refresh: ^0.12

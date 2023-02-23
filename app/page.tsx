@@ -31,7 +31,7 @@ export default function Page() {
           fullWidth
           type="button"
           onClick={handleOpen}
-          className="text-lg uppercase lg:self-center"
+          className="text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
         >
           Claim
         </Button>
@@ -42,9 +42,9 @@ export default function Page() {
       <Image
         src={degen}
         alt="degen"
-        width={900}
-        height={850}
-        className="degen-img right-0 bottom-0 self-center object-contain opacity-[85%] sm:w-[600px] xl:w-[700px] 2xl:absolute 2xl:w-[900px]"
+        width={800}
+        height={750}
+        className="degen-img right-0 bottom-0 self-center object-contain opacity-[80%] sm:w-[450px] lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px]"
       />
 
       <MintDialog open={open} handleOpen={handleOpen} />
