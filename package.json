@@ -20,7 +20,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.12",
-    "sharp": "^0.31.3"
+    "sharp": "^0.31.3",
+    "ethers": "^5.6.9",
+    "merkletreejs": "^0.3.9",
+    "web3modal": "^1.9.11"
   },
   "devDependencies": {
     "@mertasan/tailwindcss-variables": "^2.5.2",
