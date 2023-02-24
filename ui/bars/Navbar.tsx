@@ -19,6 +19,7 @@ const NavBar = () => {
         className="flex items-center p-2"
       >
         <Image
+          priority
           src={logo}
           width={40}
           height={50}
@@ -28,7 +29,7 @@ const NavBar = () => {
         />
       </a>
 
-      <div className="parallelogram flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg shadow-black-700/25">
+      <div className="parallelogram shadow-black-700/25 flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg">
         <Image width={50} height={50} src={character} alt="webaverse_character" />
 
         <Button

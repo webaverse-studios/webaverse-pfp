@@ -40,12 +40,13 @@ export default function Page() {
       </div>
 
       <Image
+        priority
         src={degen}
         alt="degen"
         width={800}
         height={750}
         // bottom glow/shadow cyan in tailwind
-        className="degen-img right-0 bottom-0 self-center object-contain opacity-[95%] sm:w-[450px] lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px] mb-8 lg:mb-0 shadow-xl"
+        className="degen-img right-0 bottom-0 mb-8 self-center object-contain opacity-[95%] shadow-xl sm:w-[450px] lg:mb-0 lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px]"
       />
 
       <MintDialog open={open} handleOpen={handleOpen} />

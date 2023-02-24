@@ -60,6 +60,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
     >
       <DialogHeader className="top-0 z-10 justify-center p-0 md:absolute md:-translate-y-2/4">
         <Image
+          priority
           width={600}
           height={600}
           alt="modal_header"
