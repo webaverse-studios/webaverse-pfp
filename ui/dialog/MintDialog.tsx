@@ -63,8 +63,8 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
         let coldWallet = coldwallets[i].toLowerCase();
         if(whitelist[coldWallet as keyof typeof whitelist]) {
           let allowance = whitelist[coldWallet as keyof typeof whitelist];
-          let mb = await pfpContract.balanceOf(coldWallet);
-          let balance = parseInt(BigNumber.from(mb).toString())
+          let ca = await pfpContract.getClaimedAmount(coldWallet);
+          let balance = parseInt(BigNumber.from(ca).toString())
           if(mintAmount <= (allowance-balance)) {
             mintAmount = allowance-balance;
             mintWallet = coldWallet;           
