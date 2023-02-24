@@ -53,7 +53,8 @@ export default function Page() {
         alt="degen"
         width={800}
         height={750}
-        className="degen-img right-0 bottom-0 self-center object-contain opacity-[80%] sm:w-[450px] lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px]"
+        // bottom glow/shadow cyan in tailwind
+        className="degen-img right-0 bottom-0 self-center object-contain opacity-[95%] sm:w-[450px] lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px] mb-8 lg:mb-0 shadow-xl"
       />
 
       <MintDialog open={open} handleOpen={handleOpen} />
