@@ -60,7 +60,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       let mintAmount = 0;
       let mintWallet = "";
       for(let i=0; i<coldwallets.length; i++) {
-        let coldWallet = coldwallets[i];
+        let coldWallet = coldwallets[i].toLowerCase();
         if(whitelist[coldWallet as keyof typeof whitelist]) {
           let allowance = whitelist[coldWallet as keyof typeof whitelist];
           let mb = await pfpContract.balanceOf(coldWallet);
@@ -103,16 +103,16 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const onMint = async () => {
     console.log("mint wallet:", mintColdWallet, mintedMaxDegens)
     const ethersProvider = new ethers.providers.Web3Provider(provider);
-    const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
+    const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider.getSigner());
     
     if(!mintedDegens || !mintColdWallet)
       return;
 
     setLoading(true)
-    const leafNodes = Object.keys(whitelist).map((addr: any) => keccak256(toUtf8Bytes(addr +'_'+ whitelist[addr])));
+    const leafNodes = Object.keys(whitelist).map((addr: any) => keccak256(toUtf8Bytes(addr.toLowerCase() +'_'+ whitelist[addr])));
     const merkleTree = new MerkleTree(leafNodes, keccak256, {sortPairs: true});
-    let claimingAllowance = whitelist[mintColdWallet as keyof typeof whitelist]
-    let claimingColdWallet = keccak256(toUtf8Bytes(mintColdWallet + '_' + claimingAllowance));
+    let claimingAllowance = whitelist[mintColdWallet as keyof typeof whitelist];
+    let claimingColdWallet = keccak256(toUtf8Bytes(mintColdWallet.toLowerCase() + '_' + claimingAllowance));
     let hexProof = merkleTree.getHexProof(claimingColdWallet);
     try {
       let tx = await pfpContract.claimTokens(hexProof, mintedDegens, claimingAllowance)
@@ -121,8 +121,11 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
         setLoading(false)
         alert("mint success!")
       }
-    } catch (err) {
+    } catch (err: any) {
       console.log(err)
+      let errorContainer =  (err.error && err.error.message)  ? err.error.message : ''
+      let errorBody = errorContainer.substr(errorContainer.indexOf(":")+1)
+      alert(errorBody)
       setLoading(false)
     }
   } 
