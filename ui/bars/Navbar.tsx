@@ -28,7 +28,7 @@ const NavBar = () => {
         />
       </a>
 
-      <div className="parallelogram flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg shadow-gray-700/25">
+      <div className="parallelogram flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg shadow-black-700/25">
         <Image width={50} height={50} src={character} alt="webaverse_character" />
 
         <Button
