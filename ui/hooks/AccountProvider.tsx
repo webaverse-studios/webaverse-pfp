@@ -8,7 +8,8 @@ export default function AccountProvider ({ children }: { children: React.ReactNo
     const [ library, setLibrary ] = useState(null)
     const [ provider, setProvider ] = useState(null)
     const [ loading, setLoading ] = useState(false)
-    const [ whitelist, setWhitelist ] = useState([])
+    const [ whitelist, setWhitelist ] = useState(null)
+    const [ coldwallets, setColdwallets ] = useState(null)
 
     const AppContextValues = {
         account,
@@ -20,7 +21,9 @@ export default function AccountProvider ({ children }: { children: React.ReactNo
         loading,
         setLoading,
         whitelist,
-        setWhitelist
+        setWhitelist,
+        coldwallets,
+        setColdwallets
     };
 
     return (

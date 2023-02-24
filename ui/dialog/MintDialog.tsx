@@ -4,13 +4,20 @@ import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
 
 import Image from 'next/image';
 
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState, useContext, useEffect } from 'react';
+import { MerkleTree } from "merkletreejs";
+import { ethers, BigNumber } from "ethers";
+import { keccak256, toUtf8Bytes } from "ethers/lib/utils";
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
 import { clamp } from 'rambdax';
 
 import modalHeaderImg from '@/public/images/modal_head.png';
+import {AppContext} from '@/ui/hooks/AccountProvider';
+import {epsAbi} from '@/ui/hooks/constant/epsAbi';
+import {pfpAbi} from '@/ui/hooks/constant/pfpAbi';
+import {epsAddress, passAddress, pfpAddress} from '@/ui/hooks/constant/address';
 
 export interface MintDialogProps {
   open: boolean;
@@ -36,19 +43,89 @@ const DialogFooterButton = ({ children, ...props }: Omit<ButtonProps, 'ref'>) =>
 };
 
 const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
-  const [mintedDegens, setMintedDegens] = useState<number>(25);
+  const [mintedDegens, setMintedDegens] = useState<number>(0);
+  const [mintedMaxDegens, setMintedMaxDegens] = useState<number>(0);
+  const [mintColdWallet, setMintColdWallet] = useState<string>();
 
-  const addDegen = () => setMintedDegens(clampMintAmount(mintedDegens + 1));
-  const subtractDegen = () => setMintedDegens(clampMintAmount(mintedDegens - 1));
+  const walletProvider: any = useContext(AppContext);
+  const { state, account, setAccount, library, setLibrary, provider, setProvider, loading, setLoading, whitelist, coldwallets} = walletProvider;
+
+
+  useEffect(() => {
+    ( async () => {
+    if ( coldwallets && whitelist ) {
+      console.log("cold wallets:", coldwallets)
+      const ethersProvider = new ethers.providers.Web3Provider(provider);
+      const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
+      let mintAmount = 0;
+      let mintWallet = "";
+      for(let i=0; i<coldwallets.length; i++) {
+        let coldWallet = coldwallets[i];
+        if(whitelist[coldWallet as keyof typeof whitelist]) {
+          let allowance = whitelist[coldWallet as keyof typeof whitelist];
+          let mb = await pfpContract.balanceOf(coldWallet);
+          let balance = parseInt(BigNumber.from(mb).toString())
+          if(mintAmount <= (allowance-balance)) {
+            mintAmount = allowance-balance;
+            mintWallet = coldWallet;           
+          }
+        }
+      }
+
+      setMintedMaxDegens(mintAmount);
+      setMintColdWallet(mintWallet);
+    }
+    })();
+  }, [coldwallets, whitelist])  
+
+  const addDegen = () => {
+    if(mintedDegens < mintedMaxDegens) {
+      setMintedDegens(clampMintAmount(mintedDegens + 1));
+    }
+  } 
+
+  const subtractDegen = () => {
+    if(mintedDegens > 0) {
+      setMintedDegens(clampMintAmount(mintedDegens - 1));
+    }
+  } 
 
   const onMintChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 4) {
       return;
     }
-
     const value = Number(e.target.value);
-    setMintedDegens(clampMintAmount(value));
+    if(value <= mintedMaxDegens ) {
+      setMintedDegens(clampMintAmount(value));
+    }
   }, []);
+
+  const onMint = async () => {
+    console.log("mint wallet:", mintColdWallet, mintedMaxDegens)
+    const ethersProvider = new ethers.providers.Web3Provider(provider);
+    const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
+    
+    if(!mintedDegens || !mintColdWallet)
+      return;
+
+    setLoading(true)
+    const leafNodes = Object.keys(whitelist).map((addr: any) => keccak256(toUtf8Bytes(addr +'_'+ whitelist[addr])));
+    const merkleTree = new MerkleTree(leafNodes, keccak256, {sortPairs: true});
+    let claimingAllowance = whitelist[mintColdWallet as keyof typeof whitelist]
+    let claimingColdWallet = keccak256(toUtf8Bytes(mintColdWallet + '_' + claimingAllowance));
+    let hexProof = merkleTree.getHexProof(claimingColdWallet);
+    try {
+      let tx = await pfpContract.claimTokens(hexProof, mintedDegens, claimingAllowance)
+      let res = await tx.wait()
+      if (res.transactionHash) {
+        setLoading(false)
+        alert("mint success!")
+      }
+    } catch (err) {
+      console.log(err)
+      setLoading(false)
+    }
+  } 
 
   return (
     <Dialog
@@ -101,14 +178,13 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
           Close
         </DialogFooterButton>
 
-        <DialogFooterButton
-          color="green"
-          onClick={() => {
-            alert(`You Minted ${mintedDegens} degens!`);
-          }}
-        >
-          Mint
-        </DialogFooterButton>
+        {
+          loading ?
+          <DialogFooterButton color="green"> Minting </DialogFooterButton>
+          :
+          <DialogFooterButton color="green" onClick={onMint}> Mint </DialogFooterButton>
+        }
+
       </DialogFooter>
     </Dialog>
   );

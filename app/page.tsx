@@ -2,17 +2,26 @@
 
 import Image from 'next/image';
 
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import { Button } from '@webaverse-studios/uikit';
 
 import degen from '@/public/images/img_degen.png';
 import SocialBar from '@/ui/bars/SocialBar';
 import MintDialog from '@/ui/dialog/MintDialog';
+import {AppContext} from '@/ui/hooks/AccountProvider';
+import {whiteList} from '@/ui/hooks/whitelist';
 
 export default function Page() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
+  const walletProvider: any = useContext(AppContext);
+  const { whitelist, setWhitelist} = walletProvider;
+  
+  useEffect(() => {
+    console.log("whitelist:", whiteList)
+    setWhitelist(whiteList)
+  }, [whiteList])
 
   return (
     <main className="relative mx-auto mt-4 flex flex-col-reverse justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">

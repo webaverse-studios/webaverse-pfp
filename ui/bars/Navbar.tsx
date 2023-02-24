@@ -13,11 +13,14 @@ import logo from '@/public/images/logo/webaverse_logo.png';
 
 import {AppContext} from '@/ui/hooks/AccountProvider';
 import {chainId} from '@/ui/hooks/constant/address';
+import {epsAbi} from '@/ui/hooks/constant/epsAbi';
+import {pfpAbi} from '@/ui/hooks/constant/pfpAbi';
+import {epsAddress, passAddress, pfpAddress} from '@/ui/hooks/constant/address';
 
 const NavBar = () => {
   const [walletAddress, setWalletAddress] = useState('');
   const walletProvider: any = useContext(AppContext);
-  const { state, account, setAccount, library, setLibrary, provider, setProvider, loading} = walletProvider;
+  const { account, setAccount, setLibrary, setProvider, setColdwallets} = walletProvider;
   
   useEffect(() => {
     setWalletAddress(account)
@@ -51,7 +54,12 @@ const NavBar = () => {
       }
       setAccount(web3Accounts[0]);
       setProvider(web3Provider);
-      setLibrary(library)
+      setLibrary(library);
+      // get cold wallets a
+      const ethersProvider = new ethers.providers.Web3Provider(web3Provider);
+      const epsContract = new ethers.Contract(epsAddress, epsAbi, ethersProvider);
+      const epsAddresses = await epsContract.getAddresses(web3Accounts[0], passAddress, 1, true, true);
+      setColdwallets(epsAddresses);
     } catch (error) {
       console.log(error);
     }
@@ -63,6 +71,7 @@ const NavBar = () => {
     setAccount(null);
     setLibrary(null);
     setProvider(null);
+    setColdwallets(null);
   }
 
   return (
