@@ -37,7 +37,7 @@ const NavBar = () => {
           variant="filled"
           className="hover:motion-safe:animate-pulse-low"
         >
-          Conntect Wallet
+          Connect Wallet
         </Button>
       </div>
     </nav>
