@@ -19,8 +19,7 @@ import {epsAddress, passAddress, pfpAddress} from '@/ui/hooks/constant/address';
 
 const NavBar = () => {
   const [walletAddress, setWalletAddress] = useState('');
-  const walletProvider: any = useContext(AppContext);
-  const { account, setAccount, setLibrary, setProvider, setColdwallets} = walletProvider;
+  const { account, setAccount, setLibrary, setProvider, setColdwallets} = useContext(AppContext);
   
   useEffect(() => {
     setWalletAddress(account)
@@ -36,7 +35,6 @@ const NavBar = () => {
 
   const connectWallet = async () => {
     try {
-      console.log("connect wallet")
       const web3Provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(web3Provider);
       const web3Accounts = await library.listAccounts();
@@ -66,7 +64,6 @@ const NavBar = () => {
   }
 
   const disConnectWallet = async () => {
-    console.log("disconnect")
     const res = await web3Modal.clearCachedProvider();
     setAccount(null);
     setLibrary(null);
@@ -83,6 +80,7 @@ const NavBar = () => {
         className="flex items-center p-2"
       >
         <Image
+          priority
           src={logo}
           width={40}
           height={50}
@@ -92,7 +90,7 @@ const NavBar = () => {
         />
       </a>
 
-      <div className="parallelogram flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg shadow-black-700/25">
+      <div className="parallelogram shadow-black-700/25 flex w-60 items-center justify-center gap-4 border-2 border-solid border-slate-500/[.25] shadow-lg">
         <Image width={50} height={50} src={character} alt="webaverse_character" />
 
         {

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 'use client';
 
 import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
@@ -8,6 +9,8 @@ import { ChangeEvent, useCallback, useState, useContext, useEffect } from 'react
 import { MerkleTree } from "merkletreejs";
 import { ethers, BigNumber } from "ethers";
 import { keccak256, toUtf8Bytes } from "ethers/lib/utils";
+import toast from 'react-hot-toast';
+
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
@@ -46,15 +49,12 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const [mintedDegens, setMintedDegens] = useState<number>(0);
   const [mintedMaxDegens, setMintedMaxDegens] = useState<number>(0);
   const [mintColdWallet, setMintColdWallet] = useState<string>();
-
-  const walletProvider: any = useContext(AppContext);
-  const { state, account, setAccount, library, setLibrary, provider, setProvider, loading, setLoading, whitelist, coldwallets} = walletProvider;
+  const { provider, loading, setLoading, whitelist, coldwallets} = useContext(AppContext);
 
 
   useEffect(() => {
     ( async () => {
     if ( coldwallets && whitelist ) {
-      console.log("cold wallets:", coldwallets)
       const ethersProvider = new ethers.providers.Web3Provider(provider);
       const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
       let mintAmount = 0;
@@ -101,7 +101,6 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   }, []);
 
   const onMint = async () => {
-    console.log("mint wallet:", mintColdWallet, mintedMaxDegens)
     const ethersProvider = new ethers.providers.Web3Provider(provider);
     const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider.getSigner());
     
@@ -119,16 +118,38 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       let res = await tx.wait()
       if (res.transactionHash) {
         setLoading(false)
-        alert("mint success!")
+        toast.success(`Successfully minted ${mintedDegens} degens!`)
       }
     } catch (err: any) {
-      console.log(err)
       let errorContainer =  (err.error && err.error.message)  ? err.error.message : ''
       let errorBody = errorContainer.substr(errorContainer.indexOf(":")+1)
-      alert(errorBody)
+      toast.error(`This just happened: ${errorBody.toString()}`)
       setLoading(false)
     }
   } 
+
+  // This calls the toast promise and passes in the promise, the loading message, the error message, and the success message
+  // Hook into the success message / error message to display whatever you need with the returned data from the promise. Also,
+  // remove the custom promise and instead use whatever api functionjality we are doing here
+  // const notify = useCallback(
+  //   () =>
+  //     toast.promise(
+  //       new Promise((resolve) => setTimeout(resolve, 2000)).then(() => {
+  //         handleOpen(false);
+  //       }),
+  //       {
+  //         loading: 'Attempting to mint...',
+  //         error: (err) => `This just happened: ${err.toString()}`,
+  //         // eslint-disable-next-line no-unused-vars
+  //         success: (_data) => `Successfully minted ${mintedDegens} degens!`,
+  //       },
+  //       {
+  //         success: { icon: '🔥' },
+  //         className: 'text-center z-[9999] max-w-[250px]',
+  //       },
+  //     ),
+  //   [handleOpen],
+  // );
 
   return (
     <Dialog
@@ -136,10 +157,11 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       transparent
       open={open}
       handler={handleOpen}
-      className="degen-modal color-[#05C4B5] w-inherit m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
+      className="degen-modal color-[#05C4B5] w-inherit z-0 m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
     >
       <DialogHeader className="top-0 z-10 justify-center p-0 md:absolute md:-translate-y-2/4">
         <Image
+          priority
           width={600}
           height={600}
           alt="modal_header"

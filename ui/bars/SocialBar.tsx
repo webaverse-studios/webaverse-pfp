@@ -3,8 +3,8 @@
 import Image from 'next/image';
 
 import discordIcon from '@/public/images/icon/discord.png';
-// import facebookIcon from '@/public/images/icon/facebook.png';
 import twitterIcon from '@/public/images/icon/twitter.png';
+// import facebookIcon from '@/public/images/icon/facebook.png';
 
 export default function SocialBar() {
   return (
@@ -15,7 +15,8 @@ export default function SocialBar() {
           src={twitterIcon}
           alt="twitter"
           width={50}
-          className="hover-opacity title_glow fill-current opacity-30 shadow-lg shadow-black-500/50"
+          height={50}
+          className="hover-opacity title_glow shadow-black-500/50 fill-current opacity-30 shadow-lg"
         />
       </a>
 
@@ -25,7 +26,8 @@ export default function SocialBar() {
           src={discordIcon}
           alt="discord"
           width={50}
-          className="hover-opacity title_glow fill-current opacity-30 shadow-lg shadow-black-500/50"
+          height={50}
+          className="hover-opacity title_glow shadow-black-500/50 fill-current opacity-30 shadow-lg"
         />
       </a>
 
