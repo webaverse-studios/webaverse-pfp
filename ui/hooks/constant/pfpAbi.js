@@ -1,4 +1,4 @@
-export const pfpAbi = 
+export const pfpAbi =
 [
     {
         "inputs": [
@@ -374,6 +374,19 @@ export const pfpAbi =
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "claimIsActive",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "bytes32[]",
@@ -397,6 +410,13 @@ export const pfpAbi =
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "flipClaimiState",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "uint256",
@@ -410,6 +430,25 @@ export const pfpAbi =
                 "internalType": "address",
                 "name": "",
                 "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "coldWallet",
+                "type": "address"
+            }
+        ],
+        "name": "getClaimedAmount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
             }
         ],
         "stateMutability": "view",
@@ -450,6 +489,19 @@ export const pfpAbi =
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "numberOfTokens",
+                "type": "uint256"
+            }
+        ],
+        "name": "mintTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
