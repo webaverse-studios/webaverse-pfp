@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 'use client';
 
 import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
@@ -5,6 +6,7 @@ import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
 import Image from 'next/image';
 
 import { ChangeEvent, useCallback, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
@@ -50,13 +52,36 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
     setMintedDegens(clampMintAmount(value));
   }, []);
 
+  // This calls the toast promise and passes in the promise, the loading message, the error message, and the success message
+  // Hook into the success message / error message to display whatever you need with the returned data from the promise. Also,
+  // remove the custom promise and instead use whatever api functionjality we are doing here
+  const notify = useCallback(
+    () =>
+      toast.promise(
+        new Promise((resolve) => setTimeout(resolve, 2000)).then(() => {
+          handleOpen(false);
+        }),
+        {
+          loading: 'Attempting to mint...',
+          error: (err) => `This just happened: ${err.toString()}`,
+          // eslint-disable-next-line no-unused-vars
+          success: (_data) => `Successfully minted ${mintedDegens} degens!`,
+        },
+        {
+          success: { icon: '🔥' },
+          className: 'text-center z-[9999] max-w-[250px]',
+        },
+      ),
+    [handleOpen],
+  );
+
   return (
     <Dialog
       size="xl"
       transparent
       open={open}
       handler={handleOpen}
-      className="degen-modal color-[#05C4B5] w-inherit m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
+      className="degen-modal color-[#05C4B5] w-inherit z-0 m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
     >
       <DialogHeader className="top-0 z-10 justify-center p-0 md:absolute md:-translate-y-2/4">
         <Image
@@ -102,12 +127,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
           Close
         </DialogFooterButton>
 
-        <DialogFooterButton
-          color="green"
-          onClick={() => {
-            alert(`You Minted ${mintedDegens} degens!`);
-          }}
-        >
+        <DialogFooterButton color="green" onClick={notify}>
           Mint
         </DialogFooterButton>
       </DialogFooter>
