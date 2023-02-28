@@ -49,12 +49,13 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const [mintedDegens, setMintedDegens] = useState<number>(0);
   const [mintedMaxDegens, setMintedMaxDegens] = useState<number>(0);
   const [mintColdWallet, setMintColdWallet] = useState<string>();
+    const [title, setTitle] = useState<string>("Select the number of Degens that you want to mint:");
   const { provider, loading, setLoading, whitelist, coldwallets} = useContext(AppContext);
 
 
   useEffect(() => {
     ( async () => {
-    if ( coldwallets && whitelist ) {
+    if ( coldwallets && whitelist && !loading) {
       const ethersProvider = new ethers.providers.Web3Provider(provider);
       const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
       let mintAmount = 0;
@@ -74,9 +75,15 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
 
       setMintedMaxDegens(mintAmount);
       setMintColdWallet(mintWallet);
+      
+      if(mintWallet == "") {
+        setTitle("Please sign in with a wallet which contained Webaverse pass on 17th Feb, 2023.");
+      } else if(mintAmount == 0) {
+        setTitle("You already minted the maximum amount of Degens.");
+      }
     }
     })();
-  }, [coldwallets, whitelist])  
+  }, [coldwallets, whitelist, loading])  
 
   const addDegen = () => {
     if(mintedDegens < mintedMaxDegens) {
@@ -171,7 +178,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       </DialogHeader>
 
       <DialogBody className="w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal text-white">
-        <span>Select the number of Degens that you want to mint:</span>
+        <span> {title} </span>
       </DialogBody>
 
       <DialogBody className="text-centertext-white flex w-full items-center justify-center p-6">
@@ -189,6 +196,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
             id="mintedDegens"
             value={mintedDegens}
             onChange={onMintChange}
+            disabled={mintColdWallet=="" || mintedMaxDegens==0}
             className="m-0 h-full w-full appearance-none bg-[#020406] text-center text-5xl"
           />
         </div>
@@ -207,7 +215,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
           loading ?
           <DialogFooterButton color="green"> Minting </DialogFooterButton>
           :
-          <DialogFooterButton color="green" onClick={onMint}> Mint </DialogFooterButton>
+          <DialogFooterButton color="green" onClick={onMint} disabled={mintColdWallet=="" || mintedMaxDegens==0}> Mint </DialogFooterButton>
         }
 
       </DialogFooter>
