@@ -171,7 +171,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       </DialogHeader>
 
       <DialogBody className="w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal text-white">
-        <span>Select the number of The Degens that you would like to mint:</span>
+        <span>Select the number of Degens that you want to mint:</span>
       </DialogBody>
 
       <DialogBody className="text-centertext-white flex w-full items-center justify-center p-6">

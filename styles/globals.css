@@ -24,3 +24,7 @@
 h1, p, .font-tt-square {
   font-family: "TTSC-Regular", sans-serif !important;
 }
+
+input {
+  outline: none !important;
+}
