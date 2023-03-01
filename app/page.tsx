@@ -18,7 +18,7 @@ export default function Page() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
   const { whitelist, setWhitelist } = useContext(AppContext);
-
+  
   useEffect(() => {
     setWhitelist(whiteList);
   }, [whiteList]);
