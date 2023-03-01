@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm-run-all next:dev",
-    "dev:turbo": "npm-run-all next:dev:turbo",
+    "dev": "npm-run-all --parallel next:dev",
+    "dev:turbo": "npm-run-all --parallel next:dev:turbo",
     "next:dev": "next dev",
     "next:dev:turbo": "next dev --turbo",
     "build": "next build",
@@ -18,14 +18,14 @@
     "@next/font": "^13.1.6",
     "@next/react-refresh-utils": "^13.1.6",
     "@webaverse-studios/uikit": "^0.0.6",
-    "ethers": "^5.6.9",
-    "merkletreejs": "^0.3.9",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-refresh": "^0.12",
     "sharp": "^0.31.3",
+    "ethers": "^5.6.9",
+    "merkletreejs": "^0.3.9",
     "web3modal": "^1.9.11"
   },
   "devDependencies": {
