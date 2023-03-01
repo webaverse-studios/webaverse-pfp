@@ -28,3 +28,9 @@ h1, p, .font-tt-square {
 input {
   outline: none !important;
 }
+
+.verPositionToScreen {
+  margin-top: 50vh !important;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

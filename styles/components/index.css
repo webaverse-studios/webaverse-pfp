@@ -14,12 +14,16 @@
     @apply text-white text-opacity-50;
   }
 
-  .degen-img {
-    @media (max-width: 1535px) {
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
-    }
+
+  .degen-image-wrap {
+    position: relative;
+    margin-left: 56px;
+    margin-top: 56px !important;
   }
+
+  .modal-title {
+    max-width: 580px;
+  } 
 
   .degen-modal {
     filter:
