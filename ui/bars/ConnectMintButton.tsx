@@ -77,6 +77,7 @@ const ConnectMintButton = (props: any) => {
         <>
           <p>Connected with: {walletAddress.slice(0, 4) + `...` + walletAddress.slice(-5)}</p>
           <Button
+            fullWidth
             color="white"
             variant="filled"
             className="text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
@@ -87,6 +88,7 @@ const ConnectMintButton = (props: any) => {
         </>
       ) : (
         <Button
+          fullWidth
           color="white"
           variant="filled"
           className="text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
