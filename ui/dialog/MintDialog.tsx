@@ -184,7 +184,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
 
       <DialogBody
         className={`modal-title w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal ${
-          !allowMintCheck ? 'text-[#43ffad]' : 'text-white'
+          !allowMintCheck ? 'text-[#7ed4ff]' : 'text-white'
         }`}
       >
         <span> {title} </span>
