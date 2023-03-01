@@ -51,7 +51,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const [title, setTitle] = useState<string>('Select the number of Degens that you want to mint!');
   const { provider, loading, setLoading, whitelist, coldwallets } = useContext(AppContext);
 
-  const [allowMintCheck, setAllowMintCheck] = useState<Boolean>(false);
+  const [allowMintCheck, setAllowMintCheck] = useState<Boolean>(true);
 
   useEffect(() => {
     (async () => {
