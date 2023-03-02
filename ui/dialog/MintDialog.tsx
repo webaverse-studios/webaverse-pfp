@@ -94,18 +94,19 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   };
 
   const subtractDegen = () => {
-    if (mintedDegens > 0) {
+    if (mintedDegens > 0 && mintedDegens !== 1) {
       setMintedDegens(clampMintAmount(mintedDegens - 1));
     }
   };
 
   const onMintChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value.length > 4) {
-      return;
-    }
     const value = Number(e.target.value);
-    if (value <= mintedMaxDegens) {
+    if (value > 0 && value <= mintedMaxDegens) {
       setMintedDegens(clampMintAmount(value));
+    } else if (value > mintedMaxDegens) {
+      setMintedDegens(clampMintAmount(Number(mintedMaxDegens)));
+    } else {
+      setMintedDegens(clampMintAmount(Number(1)));
     }
   }, []);
 
@@ -192,31 +193,31 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
 
       {allowMintCheck && (
         <>
-        <DialogBody className="text-centertext-white flex w-full items-center justify-center p-6">
-          <MintButton onClick={subtractDegen}>
-            <MinusSmallIcon className="mint-amount-btn" />
-          </MintButton>
+          <DialogBody className="text-centertext-white flex w-full items-center justify-center p-6">
+            <MintButton onClick={subtractDegen}>
+              <MinusSmallIcon className="mint-amount-btn" />
+            </MintButton>
 
-          <div className="mint-amount h-[75px] w-[165px] appearance-none px-6 font-tt-square text-6xl font-bold text-[#05C4B5]">
-            <input
-              required
-              min="0"
-              max="9999"
-              maxLength={2}
-              type="number"
-              id="mintedDegens"
-              value={mintedDegens}
-              onChange={onMintChange}
-              disabled={mintColdWallet == '' || mintedMaxDegens == 0}
-              className="m-0 h-full w-full appearance-none bg-[#020406] text-center text-5xl"
-            />
-          </div>
+            <div className="mint-amount h-[75px] w-[165px] appearance-none px-6 font-tt-square text-6xl font-bold text-[#05C4B5]">
+              <input
+                required
+                min="1"
+                max={mintedMaxDegens}
+                maxLength={2}
+                type="number"
+                id="mintedDegens"
+                value={mintedDegens}
+                onChange={onMintChange}
+                disabled={mintColdWallet == '' || mintedMaxDegens == 0}
+                className="m-0 h-full w-full appearance-none bg-[#020406] text-center text-5xl"
+              />
+            </div>
 
-          <MintButton onClick={addDegen}>
-            <PlusSmallIcon className="mint-amount-btn" />
-          </MintButton>
-        </DialogBody>
-        <p className='text-[#05C4B5]'>Available Mints: {mintedMaxDegens}</p>
+            <MintButton onClick={addDegen}>
+              <PlusSmallIcon className="mint-amount-btn" />
+            </MintButton>
+          </DialogBody>
+          <p className="text-[#05C4B5]">Available Mints: {mintedMaxDegens}</p>
         </>
       )}
       <DialogFooter
