@@ -100,7 +100,7 @@ const ConnectMintButton = (props: any) => {
           className="text-lg connectMintButton uppercase hover:motion-safe:animate-pulse-low lg:self-center"
           onClick={connectWallet}
         >
-          Conntect Wallet
+          Connect Wallet
         </Button>
       )}
     </>
