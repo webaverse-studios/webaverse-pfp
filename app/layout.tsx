@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavBar from '@/ui/bars/Navbar';
+// import NavBar from '@/ui/bars/Navbar';
 import AccountProvider from '@/ui/hooks/AccountProvider';
 
 import '@/styles/globals.css';
