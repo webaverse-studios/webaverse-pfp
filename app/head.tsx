@@ -1,3 +1,5 @@
+import featuredImage from "@/public/images/img_degen_new.png";
+
 export default function Head() {
   return (
     <>
@@ -21,6 +23,21 @@ export default function Head() {
       <meta name="msapplication-TileColor" content="#161616" />
       <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
       <meta name="theme-color" content="#161616" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@webaverse" />
+      <meta name="twitter:title" content={"DEGENS by Webaverse"} />
+      <meta name="twitter:description" content={"Degens of The Street"} />
+      <meta name="twitter:creator" content="@webaverse" />
+      
+      <meta name="twitter:image:src" content={"/images/degens.png"} />
+      
+      <meta property="og:title" content={"DEGENS by Webaverse"} />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content={"https://degens.webaverse.ai/"} />
+      <meta property="og:image" content={"/images/degens.png"} />
+      <meta property="og:description" content={"Degens of The Street"} />
+      <meta property="og:site_name" content="DEGENS by Webaverse" />
     </>
   );
 }
