@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <title>DEGENS by Webaverse</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="Degens Of The Street" />
+      <meta name="description" content="Degens of The Street" />
       <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
       <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png" />
       <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png" />
