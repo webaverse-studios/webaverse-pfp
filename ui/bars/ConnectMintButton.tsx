@@ -33,15 +33,16 @@ const ConnectMintButton = (props: any) => {
       const library = new ethers.providers.Web3Provider(web3Provider);
       const web3Accounts = await library.listAccounts();
       const network = await library.getNetwork();
-
-      if (parseInt(window.ethereum.networkVersion) !== parseInt(chainId, 16)) {
-        try {
-          await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: chainId }], // 0x4 is rinkeby. Ox1 is ethereum mainnet. 0x89 polygon mainnet  0x5: // Goerli testnet
-          });
-        } catch (err) {
-          return false;
+      if (typeof window !== 'undefined') {
+        if (parseInt(window.ethereum.networkVersion) !== parseInt(chainId, 16)) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: chainId }], // 0x4 is rinkeby. Ox1 is ethereum mainnet. 0x89 polygon mainnet  0x5: // Goerli testnet
+            });
+          } catch (err) {
+            return false;
+          }
         }
       }
       setAccount(web3Accounts[0]);
