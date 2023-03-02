@@ -80,7 +80,7 @@ const ConnectMintButton = (props: any) => {
             fullWidth
             color="white"
             variant="filled"
-            className="text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
+            className="text-lg connectMintButton uppercase hover:motion-safe:animate-pulse-low lg:self-center"
             onClick={openModal}
           >
             Mint your Degens
@@ -91,7 +91,7 @@ const ConnectMintButton = (props: any) => {
           fullWidth
           color="white"
           variant="filled"
-          className="text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
+          className="text-lg connectMintButton uppercase hover:motion-safe:animate-pulse-low lg:self-center"
           onClick={connectWallet}
         >
           Conntect Wallet

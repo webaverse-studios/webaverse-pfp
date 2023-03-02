@@ -34,6 +34,23 @@
     max-width: 580px;
   } 
 
+  .connectMintButton {
+    background-image: url(/images/bg/bg_button.png);
+    background-color: #001b2a !important;
+    background-size: cover;
+    background-position: center;
+    color: #ededed !important;
+    border: 1px solid #ededed;
+  }
+
+  .webaverse-logo {
+    height: 60px;
+    width: auto;
+    position: absolute;
+    top: 24px;
+    left: 0;
+  }
+
   .degen-modal {
     filter:
         drop-shadow(1px 1px 0 rgba(255, 255, 255, 0.125))
