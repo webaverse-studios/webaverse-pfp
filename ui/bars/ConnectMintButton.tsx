@@ -75,7 +75,7 @@ const ConnectMintButton = (props: any) => {
     <>
       {walletAddress ? (
         <>
-          <p>Connected with: {walletAddress.slice(0, 4) + `...` + walletAddress.slice(-5)}</p>
+          <p className='mb-4'>Connected: {walletAddress.slice(0, 4) + `...` + walletAddress.slice(-5)}</p>
           <Button
             fullWidth
             color="white"

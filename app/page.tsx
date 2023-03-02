@@ -27,9 +27,9 @@ export default function Page() {
       <main className="verPositionToScreen relative mx-auto flex flex-col-reverse justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
         <Image priority src={logo} alt="degen" className="webaverse-logo" />
         <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg">
-          <h1 className="main-title mb-6 text-center text-6xl font-bold leading-none duration-1000 motion-safe:animate-pulse-slow sm:text-6xl lg:text-8xl">
+          <h1 className="main-title mb-6 text-center text-6xl sm:text-6xl lg:text-8xl font-bold leading-none duration-1000 motion-safe:animate-pulse-slow">
             Degens
-            <span>of The Street</span>
+            <span className='text-3xl sm:text-3xl lg:text-5xl'>of The Street</span>
           </h1>
           <ConnectMintButton openModal={handleOpen} />
           <SocialBar />

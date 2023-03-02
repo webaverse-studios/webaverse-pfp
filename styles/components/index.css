@@ -16,12 +16,11 @@
 
   .main-title {
     text-shadow: 2px 2px 2px #161616;
+    text-align: left;
   }
 
   .main-title span {
     display: block;
-    zoom: 0.57;
-    margin-top: 4px;
   }
 
   .degen-image-wrap {
@@ -41,6 +40,8 @@
     background-position: center;
     color: #ededed !important;
     border: 1px solid #ededed;
+    max-width: 324px;
+    margin-left: 4px;
   }
 
   .webaverse-logo {
