@@ -29,7 +29,7 @@ export default function Page() {
         <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg">
           <h1 className="main-title mb-6 text-6xl lg:text-8xl text-center font-bold leading-none duration-1000 motion-safe:animate-pulse-slow sm:text-6xl">
             Degens
-            <span>Of The Street</span>
+            <span>of The Street</span>
           </h1>
           <ConnectMintButton openModal={handleOpen} />
           <SocialBar />
