@@ -1,8 +1,13 @@
+@import './fonts/index.css';
+
 @import 'tailwindcss/base';
 @import './base/index.css';
 
 @import 'tailwindcss/components';
 @import './components/index.css';
+
+@import 'tailwindcss/utilities';
+@import './utilities/index.css';
 
 @import 'tailwindcss/utilities';
 @import './utilities/index.css';
@@ -14,4 +19,22 @@
   --header-height: theme(height.12);
   --header-margin-desktop: theme(margin.8);
   --total-height: calc(var(--header-height) + var(--header-margin-desktop));
+}
+
+html {
+  background-color: #001c2b;
+}
+
+h1, p, .font-tt-square {
+  font-family: "TTSC-Regular", sans-serif !important;
+}
+
+input {
+  outline: none !important;
+}
+
+.verPositionToScreen {
+  margin-top: 50vh !important;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

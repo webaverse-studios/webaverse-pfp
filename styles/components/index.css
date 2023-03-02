@@ -14,11 +14,62 @@
     @apply text-white text-opacity-50;
   }
 
-  .degen-img {
-    @media (max-width: 1535px) {
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
-    }
+  .main-title {
+    text-shadow: 2px 2px 2px #161616;
+    text-align: left;
+  }
+
+  .main-title span {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .degen-image-wrap {
+    position: relative;
+    margin-left: 56px;
+    margin-top: 56px !important;
+  }
+
+  .modal-title {
+    max-width: 580px;
+  } 
+
+  .connectMintButton {
+    background-image: url(/images/bg/bg_button.png);
+    background-color: #001b2a !important;
+    background-size: cover;
+    background-position: center;
+    color: #ededed !important;
+    border: 1px solid #ededed;
+  }
+
+  .webaverse-logo {
+    height: 60px;
+    width: auto;
+    position: absolute;
+    top: 24px;
+    left: 0;
+  }
+
+  .address-bar {
+    border: 1px solid rgba(255,255,255,1);
+    padding: 2px 8px;
+    background: #007f6d;
+    text-align: left;
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #FFFFFF;
+    margin-bottom: -1px;
+  }
+
+  .address-bar span {
+    float: right;
+    cursor: pointer;
+  }
+
+  .address-bar span:hover {
+    color: rgba(255,255,255,0.3);
   }
 
   .degen-modal {
