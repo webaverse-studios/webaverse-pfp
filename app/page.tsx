@@ -43,9 +43,9 @@ export default function Page() {
           className="degen-img right-0 bottom-0 mb-8 self-center object-contain opacity-[95%] shadow-xl sm:w-[450px] lg:mb-0 lg:w-[600px] xl:w-[650px] 2xl:absolute 2xl:w-[850px]"
         />
         <MintDialog open={open} handleOpen={handleOpen} />
-        {/* This displays toast */}
-        <Toaster />
       </main>
+      {/* This displays toast */}
+      <Toaster />
     </>
   );
 }
