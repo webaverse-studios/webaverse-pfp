@@ -21,6 +21,7 @@
 
   .main-title span {
     display: block;
+    margin-top: 4px;
   }
 
   .degen-image-wrap {
