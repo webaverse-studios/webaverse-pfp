@@ -16,12 +16,11 @@
 
   .main-title {
     text-shadow: 2px 2px 2px #161616;
-    font-size: 6.75rem !important;
   }
 
   .main-title span {
     display: block;
-    font-size: 3.75rem;
+    zoom: 0.55;
     margin-top: 4px;
   }
 
