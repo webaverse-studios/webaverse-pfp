@@ -20,15 +20,14 @@ const ConnectMintButton = (props: any) => {
     setWalletAddress(account);
   }, [account]);
 
-  const web3Modal = new Web3Modal({
-    network: 'goerli',
-    theme: 'light',
-    cacheProvider: false,
-    providerOptions: {},
-  });
-
   const connectWallet = async () => {
     try {
+      const web3Modal = new Web3Modal({
+        network: 'goerli',
+        theme: 'light',
+        cacheProvider: false,
+        providerOptions: {},
+      });
       const web3Provider = await web3Modal.connect();
       const library = new ethers.providers.Web3Provider(web3Provider);
       const web3Accounts = await library.listAccounts();
@@ -65,7 +64,7 @@ const ConnectMintButton = (props: any) => {
   };
 
   const disConnectWallet = async () => {
-    const res = await web3Modal.clearCachedProvider();
+    // const res = await web3Modal.clearCachedProvider();
     setAccount(null);
     setLibrary(null);
     setProvider(null);
