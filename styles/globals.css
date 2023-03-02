@@ -21,6 +21,10 @@
   --total-height: calc(var(--header-height) + var(--header-margin-desktop));
 }
 
+html {
+  background-color: #001c2b;
+}
+
 h1, p, .font-tt-square {
   font-family: "TTSC-Regular", sans-serif !important;
 }
