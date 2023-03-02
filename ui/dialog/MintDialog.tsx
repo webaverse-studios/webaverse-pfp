@@ -99,16 +99,17 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
     }
   };
 
-  const onMintChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const value = Number(e.target.value);
-    if (value > 0 && value <= mintedMaxDegens) {
-      setMintedDegens(clampMintAmount(value));
-    } else if (value > mintedMaxDegens) {
+  const onMintChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const valueString = e.target.value.replace(/^0+/, '');
+    const finalNum = Number(valueString);
+    if (finalNum > 0 && finalNum <= mintedMaxDegens) {
+      setMintedDegens(clampMintAmount(finalNum));
+    } else if (finalNum > mintedMaxDegens) {
       setMintedDegens(clampMintAmount(Number(mintedMaxDegens)));
     } else {
       setMintedDegens(clampMintAmount(Number(1)));
     }
-  }, []);
+  };
 
   const onMint = async () => {
     const ethersProvider = new ethers.providers.Web3Provider(provider);
@@ -201,8 +202,8 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
             <div className="mint-amount h-[75px] w-[165px] appearance-none px-6 font-tt-square text-6xl font-bold text-[#05C4B5]">
               <input
                 required
-                min="1"
-                max={mintedMaxDegens}
+                min={1}
+                max={999}
                 maxLength={2}
                 type="number"
                 id="mintedDegens"

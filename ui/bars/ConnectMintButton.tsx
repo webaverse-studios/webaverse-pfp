@@ -81,12 +81,15 @@ const ConnectMintButton = (props: any) => {
     <>
       {walletAddress ? (
         <>
-          <p className='address-bar'>{walletAddress.slice(0, 4) + `... ` + walletAddress.slice(-5)}<span onClick={disConnectWallet}>Disconnect</span></p>
+          <p className="address-bar">
+            {walletAddress.slice(0, 4) + `... ` + walletAddress.slice(-5)}
+            <span onClick={disConnectWallet}>Disconnect</span>
+          </p>
           <Button
             fullWidth
             color="white"
             variant="filled"
-            className="text-lg connectMintButton uppercase hover:motion-safe:animate-pulse-low lg:self-center"
+            className="connectMintButton text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
             onClick={openModal}
           >
             Mint your Degens
@@ -97,7 +100,7 @@ const ConnectMintButton = (props: any) => {
           fullWidth
           color="white"
           variant="filled"
-          className="text-lg connectMintButton uppercase hover:motion-safe:animate-pulse-low lg:self-center"
+          className="connectMintButton text-lg uppercase hover:motion-safe:animate-pulse-low lg:self-center"
           onClick={connectWallet}
         >
           Connect Wallet
