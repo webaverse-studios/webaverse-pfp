@@ -27,15 +27,10 @@ export default function Page() {
     <>
       <main className="verPositionToScreen relative mx-auto flex flex-col-reverse justify-center text-gray-100 sm:mt-0 lg:-mt-[(var(--total-height))] lg:h-full lg:flex-row lg:justify-between">
         <div className="flex flex-col justify-center rounded-sm text-center lg:max-w-md lg:text-left xl:max-w-lg">
-          <h1 className="main-title text-5xl font-bold leading-none duration-1000 motion-safe:animate-pulse-slow sm:text-6xl">
+          <h1 className="main-title mb-6 text-5xl text-center font-bold leading-none duration-1000 motion-safe:animate-pulse-slow sm:text-6xl">
             Degens
             <span>Of The Street</span>
           </h1>
-          <p className="mt-6 mb-8 color-[#dddddd] text-md sm:mb-12">
-            We are the Degens. Join us! The future of the open metaverse is in our hands! Let&apos;s
-            forge a world that&apos;s free, equitable, and connected. Band together in a spirit of
-            collaboration and innovation and we will seize the reins of our virtual destiny today!
-          </p>
           <ConnectMintButton openModal={handleOpen} />
           <SocialBar />
         </div>
