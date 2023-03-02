@@ -191,6 +191,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
       </DialogBody>
 
       {allowMintCheck && (
+        <>
         <DialogBody className="text-centertext-white flex w-full items-center justify-center p-6">
           <MintButton onClick={subtractDegen}>
             <MinusSmallIcon className="mint-amount-btn" />
@@ -215,6 +216,8 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
             <PlusSmallIcon className="mint-amount-btn" />
           </MintButton>
         </DialogBody>
+        <p className='text-[#05C4B5]'>Available Mints: {mintedMaxDegens}</p>
+        </>
       )}
       <DialogFooter
         className={`flex-col-reverse justify-center p-6 md:flex-row ${!allowMintCheck && 'pt-0'}`}
