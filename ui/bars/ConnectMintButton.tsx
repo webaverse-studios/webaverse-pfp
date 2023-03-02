@@ -64,7 +64,13 @@ const ConnectMintButton = (props: any) => {
   };
 
   const disConnectWallet = async () => {
-    // const res = await web3Modal.clearCachedProvider();
+    const web3Modal = new Web3Modal({
+      network: 'goerli',
+      theme: 'light',
+      cacheProvider: false,
+      providerOptions: {},
+    });
+    const res = await web3Modal.clearCachedProvider();
     setAccount(null);
     setLibrary(null);
     setProvider(null);
@@ -75,7 +81,7 @@ const ConnectMintButton = (props: any) => {
     <>
       {walletAddress ? (
         <>
-          <p className='mb-4'>Connected: {walletAddress.slice(0, 4) + `...` + walletAddress.slice(-5)}</p>
+          <p className='address-bar'>{walletAddress.slice(0, 4) + `... ` + walletAddress.slice(-5)}<span onClick={disConnectWallet}>Disconnect</span></p>
           <Button
             fullWidth
             color="white"

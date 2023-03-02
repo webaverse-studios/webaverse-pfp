@@ -41,8 +41,6 @@
     background-position: center;
     color: #ededed !important;
     border: 1px solid #ededed;
-    max-width: 324px;
-    margin-left: 4px;
   }
 
   .webaverse-logo {
@@ -51,6 +49,27 @@
     position: absolute;
     top: 24px;
     left: 0;
+  }
+
+  .address-bar {
+    border: 1px solid rgba(255,255,255,1);
+    padding: 2px 8px;
+    background: #007f6d;
+    text-align: left;
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #FFFFFF;
+    margin-bottom: -1px;
+  }
+
+  .address-bar span {
+    float: right;
+    cursor: pointer;
+  }
+
+  .address-bar span:hover {
+    color: rgba(255,255,255,0.3);
   }
 
   .degen-modal {
