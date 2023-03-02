@@ -18,7 +18,7 @@ module.exports = withWT({
         'pulse-slow': 'pulse 6s linear infinite',
       },
       backgroundImage: {
-        degen: "url('../public/images/bg/bg_degen.png')",
+        degen: "url('../public/images/bg/bg_degen.jpg')",
         'mint-modal': "url('../public/images/bg/bg_modal_frame.png')",
       },
       // https://vercel.com/design/color
