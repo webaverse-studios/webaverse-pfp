@@ -30,7 +30,7 @@ export default function Head() {
       <meta name="twitter:description" content={"Degens of The Street"} />
       <meta name="twitter:creator" content="@webaverse" />
       
-      <meta name="twitter:image:src" content={"/images/degens.png"} />
+      <meta name="twitter:image" content={"/images/degens.png"} />
       
       <meta property="og:title" content={"DEGENS by Webaverse"} />
       <meta property="og:type" content="article" />
