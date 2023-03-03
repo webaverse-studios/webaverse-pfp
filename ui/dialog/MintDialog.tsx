@@ -137,7 +137,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
     } catch (err: any) {
       let errorContainer = err.error && err.error.message ? err.error.message : '';
       let errorBody = errorContainer.substr(errorContainer.indexOf(':') + 1);
-      toast.error(`This just happened: ${errorBody.toString()}`);
+      toast.error(`${errorBody.toString()}`);
       setLoading(false);
     }
   };
