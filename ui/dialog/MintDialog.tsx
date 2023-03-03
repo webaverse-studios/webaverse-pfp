@@ -202,7 +202,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
             <div className="mint-amount h-[75px] w-[165px] appearance-none px-6 font-tt-square text-6xl font-bold text-[#05C4B5]">
               <input
                 required
-                min={1}
+                min={0}
                 max={999}
                 maxLength={2}
                 type="number"
