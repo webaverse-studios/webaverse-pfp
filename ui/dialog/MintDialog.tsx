@@ -77,7 +77,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
         setMintColdWallet(mintWallet);
 
         if (mintWallet == '') {
-          setTitle('Please sign in with a wallet which contains Webaverse pass on 17th Feb, 2023.');
+          setTitle('Please sign in with a wallet which held Webaverse pass on 17th Feb, 2023.');
           setAllowMintCheck(false);
         } else if (mintAmount == 0) {
           setTitle('You already minted the maximum amount of Degens.');
