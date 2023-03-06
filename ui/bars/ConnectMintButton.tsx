@@ -2,7 +2,9 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
-import Web3Modal from 'web3modal';
+import { useWeb3React } from "@web3-react/core";
+import { InjectedConnector } from "@web3-react/injected-connector";
+// import Web3Modal from 'web3modal';
 
 import { Button } from '@webaverse-studios/uikit';
 import { AppContext } from '@/ui/hooks/AccountProvider';
@@ -11,27 +13,52 @@ import { epsAbi } from '@/ui/hooks/constant/epsAbi';
 import { epsAddress, passAddress, pfpAddress } from '@/ui/hooks/constant/address';
 
 const ConnectMintButton = (props: any) => {
-  const [walletAddress, setWalletAddress] = useState('');
-  const { account, setAccount, setLibrary, setProvider, setColdwallets } = useContext(AppContext);
+  // const [walletAddress, setWalletAddress] = useState('');
+  const { setAccount, setLibrary, setProvider, setColdwallets } = useContext(AppContext);
 
   const { openModal } = props;
 
+  const {
+    activate,
+    deactivate,
+    library,
+    account
+  } = useWeb3React();
+  
+  const injected = new InjectedConnector({
+    supportedChainIds: [1],
+  });
+
   useEffect(() => {
-    setWalletAddress(account);
+    (async () => {
+      if(account) {
+        const epsContract = new ethers.Contract(epsAddress, epsAbi, ethers.getDefaultProvider('mainnet'));
+        const epsAddresses = await epsContract.getAddresses(
+          account,
+          passAddress,
+          1,
+          true,
+          true,
+        );
+        setColdwallets(epsAddresses);
+      }
+    })();
   }, [account]);
 
   const connectWallet = async () => {
     try {
-      const web3Modal = new Web3Modal({
-        network: 'goerli',
-        theme: 'light',
-        cacheProvider: false,
-        providerOptions: {},
-      });
-      const web3Provider = await web3Modal.connect();
-      const library = new ethers.providers.Web3Provider(web3Provider);
-      const web3Accounts = await library.listAccounts();
-      const network = await library.getNetwork();
+      // const web3Modal = new Web3Modal({
+      //   network: 'goerli',
+      //   theme: 'light',
+      //   cacheProvider: false,
+      //   providerOptions: {},
+      // });
+      // const web3Provider = await web3Modal.connect();
+      // const library = new ethers.providers.Web3Provider(web3Provider);
+      // const web3Accounts = await library.listAccounts();
+      // const network = await library.getNetwork();
+      await activate(injected);
+
       if (typeof window !== 'undefined') {
         if (parseInt(window.ethereum.networkVersion) !== parseInt(chainId, 16)) {
           try {
@@ -44,45 +71,50 @@ const ConnectMintButton = (props: any) => {
           }
         }
       }
-      setAccount(web3Accounts[0]);
-      setProvider(web3Provider);
-      setLibrary(library);
+      setAccount(account);
+
+      console.log("account:", account)
+      // setProvider(web3Provider);
+      // setLibrary(library);
       // get cold wallets a
-      const ethersProvider = new ethers.providers.Web3Provider(web3Provider);
-      const epsContract = new ethers.Contract(epsAddress, epsAbi, ethersProvider);
-      const epsAddresses = await epsContract.getAddresses(
-        web3Accounts[0],
-        passAddress,
-        1,
-        true,
-        true,
-      );
-      setColdwallets(epsAddresses);
+      // const signer = new ethers.providers.Web3Provider(window.ethereum).getSigner();
+      // const ethersProvider = new ethers.providers.Web3Provider(signer);
+
+      // const epsContract = new ethers.Contract(epsAddress, epsAbi, ethers.getDefaultProvider('mainnet'));
+      // const epsAddresses = await epsContract.getAddresses(
+      //   account,
+      //   passAddress,
+      //   1,
+      //   true,
+      //   true,
+      // );
+      // setColdwallets(epsAddresses);
     } catch (error) {
       console.log(error);
     }
   };
 
   const disConnectWallet = async () => {
-    const web3Modal = new Web3Modal({
-      network: 'goerli',
-      theme: 'light',
-      cacheProvider: false,
-      providerOptions: {},
-    });
-    const res = await web3Modal.clearCachedProvider();
+    // const web3Modal = new Web3Modal({
+    //   network: 'goerli',
+    //   theme: 'light',
+    //   cacheProvider: false,
+    //   providerOptions: {},
+    // });
+    // const res = await web3Modal.clearCachedProvider();
+    deactivate();
     setAccount(null);
-    setLibrary(null);
-    setProvider(null);
+    // setLibrary(null);
+    // setProvider(null);
     setColdwallets(null);
   };
 
   return (
     <>
-      {walletAddress ? (
+      {account ? (
         <>
           <p className="address-bar">
-            {walletAddress.slice(0, 4) + `... ` + walletAddress.slice(-5)}
+            {account.slice(0, 4) + `... ` + account.slice(-5)}
             <span onClick={disConnectWallet}>Disconnect</span>
           </p>
           <Button
