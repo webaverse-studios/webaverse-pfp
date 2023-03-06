@@ -1,5 +1,3 @@
-import featuredImage from "@/public/images/img_degen_new.png";
-
 export default function Head() {
   return (
     <>

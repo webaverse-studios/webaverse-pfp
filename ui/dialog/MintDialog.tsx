@@ -21,6 +21,8 @@ import { epsAbi } from '@/ui/hooks/constant/epsAbi';
 import { pfpAbi } from '@/ui/hooks/constant/pfpAbi';
 import { epsAddress, passAddress, pfpAddress } from '@/ui/hooks/constant/address';
 
+declare var window: any
+
 export interface MintDialogProps {
   open: boolean;
   handleOpen: DialogHandler;
@@ -49,15 +51,15 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const [mintedMaxDegens, setMintedMaxDegens] = useState<number>(0);
   const [mintColdWallet, setMintColdWallet] = useState<string>();
   const [title, setTitle] = useState<string>('Select the number of Degens that you want to mint!');
-  const { provider, loading, setLoading, whitelist, coldwallets } = useContext(AppContext);
+  const { loading, setLoading, whitelist, coldwallets } = useContext(AppContext);
 
   const [allowMintCheck, setAllowMintCheck] = useState<Boolean>(true);
 
   useEffect(() => {
     (async () => {
       if (coldwallets && whitelist && !loading) {
-        const ethersProvider = new ethers.providers.Web3Provider(provider);
-        const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider);
+        // const ethersProvider = new ethers.providers.Web3Provider(provider);
+        const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethers.getDefaultProvider('mainnet'));
         let mintAmount = 0;
         let mintWallet = '';
         for (let i = 0; i < coldwallets.length; i++) {
@@ -112,8 +114,10 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   };
 
   const onMint = async () => {
-    const ethersProvider = new ethers.providers.Web3Provider(provider);
-    const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethersProvider.getSigner());
+    // const ethersProvider = new ethers.providers.Web3Provider(provider);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, signer);
 
     if (!mintedDegens || !mintColdWallet) return;
 
