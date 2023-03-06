@@ -7,16 +7,16 @@ import { Toaster } from 'react-hot-toast';
 
 import degen from '@/public/images/img_degen_new.png';
 import logo from '@/public/images/logo/webaverse_logo.png';
+import ConnectMintButton from '@/ui/bars/ConnectMintButton';
 import SocialBar from '@/ui/bars/SocialBar';
 import MintDialog from '@/ui/dialog/MintDialog';
 import { AppContext } from '@/ui/hooks/AccountProvider';
 import { whiteList } from '@/ui/hooks/whitelist';
-import ConnectMintButton from '@/ui/bars/ConnectMintButton';
 
 export default function Page() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
-  const { whitelist, setWhitelist } = useContext(AppContext);
+  const { setWhitelist } = useContext(AppContext);
 
   useEffect(() => {
     setWhitelist(whiteList);
