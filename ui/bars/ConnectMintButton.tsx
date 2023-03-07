@@ -34,7 +34,9 @@ const ConnectMintButton = (props: any) => {
   useEffect(() => {
     (async () => {
       if(account) {
-        const epsContract = new ethers.Contract(epsAddress, epsAbi, ethers.getDefaultProvider('mainnet'));
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const epsContract = new ethers.Contract(epsAddress, epsAbi, signer);
         const epsAddresses = await epsContract.getAddresses(
           account,
           passAddress,

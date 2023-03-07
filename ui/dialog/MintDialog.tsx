@@ -58,8 +58,9 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   useEffect(() => {
     (async () => {
       if (coldwallets && whitelist && !loading) {
-        // const ethersProvider = new ethers.providers.Web3Provider(provider);
-        const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, ethers.getDefaultProvider('mainnet'));
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, signer);
         let mintAmount = 0;
         let mintWallet = '';
         for (let i = 0; i < coldwallets.length; i++) {
