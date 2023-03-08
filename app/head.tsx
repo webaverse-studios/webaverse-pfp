@@ -32,8 +32,8 @@ export default function Head() {
       
       <meta property="og:title" content={"DEGENS by Webaverse"} />
       <meta property="og:type" content="article" />
-      <meta property="og:url" content={"https://degens.webaverse.ai/images/degens.png"} />
-      <meta property="og:image" content={"/images/degens.png"} />
+      <meta property="og:url" content={"https://degens.webaverse.ai"} />
+      <meta property="og:image" content={"https://degens.webaverse.ai/images/degens.png"} />
       <meta property="og:description" content={"Degens of The Street"} />
       <meta property="og:site_name" content="DEGENS by Webaverse" />
     </>
