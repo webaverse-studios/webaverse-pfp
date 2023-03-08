@@ -22,7 +22,7 @@ export default function Head() {
       <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
       <meta name="theme-color" content="#161616" />
 
-      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@webaverse" />
       <meta name="twitter:title" content={"DEGENS by Webaverse"} />
       <meta name="twitter:description" content={"Degens of The Street"} />
