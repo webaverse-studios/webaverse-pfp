@@ -25,7 +25,7 @@ const ConnectMintButton = (props: any) => {
   const { activate, deactivate, library, account } = useWeb3React();
 
   const injected = new InjectedConnector({
-    supportedChainIds: [1],
+    supportedChainIds: [1, 3, 4, 5, 42]
   });
 
   const walletconnect = new WalletConnectConnector({
@@ -38,15 +38,18 @@ const ConnectMintButton = (props: any) => {
 
   useEffect(() => {
     (async () => {
-      if (account) {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
+      if (account && library) {
+        await library.provider.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: chainId }],
+        });
+        const signer = library.getSigner(account).connectUnchecked()
         const epsContract = new ethers.Contract(epsAddress, epsAbi, signer);
         const epsAddresses = await epsContract.getAddresses(account, passAddress, 1, true, true);
         setColdwallets(epsAddresses);
       }
     })();
-  }, [account]);
+  }, [account, library]);
 
   const connectWallet = async (walletType: string) => {
     try {
