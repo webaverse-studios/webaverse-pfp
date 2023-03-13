@@ -2,9 +2,9 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { ethers } from 'ethers';
-import { useWeb3React } from "@web3-react/core";
-import { InjectedConnector } from "@web3-react/injected-connector";
-import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { useWeb3React } from '@web3-react/core';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 // import Web3Modal from 'web3modal';
 
 import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
@@ -14,7 +14,7 @@ import { chainId } from '@/ui/hooks/constant/address';
 import { epsAbi } from '@/ui/hooks/constant/epsAbi';
 import { epsAddress, passAddress, pfpAddress } from '@/ui/hooks/constant/address';
 
-declare var window: any
+declare var window: any;
 
 const ConnectMintButton = (props: any) => {
   // const [walletAddress, setWalletAddress] = useState('');
@@ -22,36 +22,27 @@ const ConnectMintButton = (props: any) => {
   const { setAccount, setLibrary, setProvider, setColdwallets } = useContext(AppContext);
   const { openModal } = props;
 
-  const {
-    activate,
-    deactivate,
-    library,
-    account
-  } = useWeb3React();
-  
+  const { activate, deactivate, library, account } = useWeb3React();
+
   const injected = new InjectedConnector({
     supportedChainIds: [1],
   });
 
   const walletconnect = new WalletConnectConnector({
-    rpcUrl: "https://mainnet.infura.io/v3/",
-    bridge: "https://bridge.walletconnect.org",
-    qrcode: true
+    rpc: {
+      1: "https://mainnet.infura.io/v3/",
+    },
+    bridge: 'https://bridge.walletconnect.org',
+    qrcode: true,
   });
 
   useEffect(() => {
     (async () => {
-      if(account) {
+      if (account) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
         const epsContract = new ethers.Contract(epsAddress, epsAbi, signer);
-        const epsAddresses = await epsContract.getAddresses(
-          account,
-          passAddress,
-          1,
-          true,
-          true,
-        );
+        const epsAddresses = await epsContract.getAddresses(account, passAddress, 1, true, true);
         setColdwallets(epsAddresses);
       }
     })();
@@ -59,9 +50,9 @@ const ConnectMintButton = (props: any) => {
 
   const connectWallet = async (walletType: string) => {
     try {
-      if(walletType == "Metamask") {
+      if (walletType == 'Metamask') {
         await activate(injected);
-      } else if(walletType == "Walletconnect") {
+      } else if (walletType == 'Walletconnect') {
         await activate(walletconnect);
       }
 
@@ -78,7 +69,7 @@ const ConnectMintButton = (props: any) => {
         }
       }
       setAccount(account);
-      setShowWalletModal(false)
+      setShowWalletModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -100,8 +91,8 @@ const ConnectMintButton = (props: any) => {
   };
 
   const handleOpen = () => {
-    setShowWalletModal(!showWalletModal)
-  }
+    setShowWalletModal(!showWalletModal);
+  };
 
   const DialogButton = ({ children, ...props }: Omit<ButtonProps, 'ref'>) => {
     return (
@@ -141,24 +132,24 @@ const ConnectMintButton = (props: any) => {
         </Button>
       )}
 
-    <Dialog
-      size="xl"
-      transparent
-      open={showWalletModal}
-      handler={handleOpen}
-      className="degen-modal color-[#05C4B5] w-inherit z-0 m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
-    >
-      <DialogBody
-        className={`modal-title w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal text-[#7ed4ff] `}
+      <Dialog
+        size="xl"
+        transparent
+        open={showWalletModal}
+        handler={handleOpen}
+        className="degen-modal color-[#05C4B5] w-inherit z-0 m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
       >
-        <DialogButton color="white" onClick={() => connectWallet("Metamask")}>
-         Metamask
-        </DialogButton>
-        <DialogButton color="white" onClick={() => connectWallet("Walletconnect")}>
-        WalletConnect
-        </DialogButton>
-      </DialogBody>
-    </Dialog>
+        <DialogBody
+          className={`modal-title w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal text-[#7ed4ff] `}
+        >
+          <DialogButton style={{width: "320px"}} color="white" onClick={() => connectWallet('Metamask')}>
+            Metamask
+          </DialogButton>
+          <DialogButton style={{width: "320px"}} color="white" onClick={() => connectWallet('Walletconnect')}>
+            WalletConnect
+          </DialogButton>
+        </DialogBody>
+      </Dialog>
     </>
   );
 };
