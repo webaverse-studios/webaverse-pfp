@@ -10,6 +10,7 @@ import { MerkleTree } from 'merkletreejs';
 import { ethers, BigNumber } from 'ethers';
 import { keccak256, toUtf8Bytes } from 'ethers/lib/utils';
 import toast from 'react-hot-toast';
+import { useWeb3React } from '@web3-react/core';
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/20/solid';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
@@ -52,14 +53,14 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   const [mintColdWallet, setMintColdWallet] = useState<string>();
   const [title, setTitle] = useState<string>('Select the number of Degens that you want to mint!');
   const { loading, setLoading, whitelist, coldwallets } = useContext(AppContext);
+  const { activate, deactivate, library, account } = useWeb3React();
 
   const [allowMintCheck, setAllowMintCheck] = useState<Boolean>(true);
 
   useEffect(() => {
     (async () => {
       if (coldwallets && whitelist && !loading) {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
+        const signer = library.getSigner(account).connectUnchecked()
         const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, signer);
         let mintAmount = 0;
         let mintWallet = '';
@@ -115,9 +116,7 @@ const MintDialog = ({ open, handleOpen }: MintDialogProps) => {
   };
 
   const onMint = async () => {
-    // const ethersProvider = new ethers.providers.Web3Provider(provider);
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    const signer = library.getSigner(account).connectUnchecked()
     const pfpContract = new ethers.Contract(pfpAddress, pfpAbi, signer);
 
     if (!mintedDegens || !mintColdWallet) return;
