@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import discordIcon from '@/public/images/icon/discord.png';
 import twitterIcon from '@/public/images/icon/twitter.png';
+import openSeaIcon from '@/public/images/icon/opensea.png';
 // import facebookIcon from '@/public/images/icon/facebook.png';
 
 export default function SocialBar() {
@@ -25,6 +26,17 @@ export default function SocialBar() {
         <Image
           src={discordIcon}
           alt="discord"
+          width={50}
+          height={50}
+          className="hover-opacity title_glow shadow-black-500/50 fill-current opacity-30 shadow-lg"
+        />
+      </a>
+
+      {/* OpenSea */}
+      <a target="_blank" rel="noreferrer" href="https://opensea.io/collection/degens-of-the-street">
+        <Image
+          src={openSeaIcon}
+          alt="opensea"
           width={50}
           height={50}
           className="hover-opacity title_glow shadow-black-500/50 fill-current opacity-30 shadow-lg"

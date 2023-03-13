@@ -7,6 +7,9 @@ import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 // import Web3Modal from 'web3modal';
 
+import Image from 'next/image';
+import modalHeaderImg from '@/public/images/modal_head.png';
+
 import type { ButtonProps, DialogHandler } from '@webaverse-studios/uikit';
 import { Button, Dialog, DialogFooter, DialogHeader, DialogBody } from '@webaverse-studios/uikit';
 import { AppContext } from '@/ui/hooks/AccountProvider';
@@ -44,8 +47,8 @@ const ConnectMintButton = (props: any) => {
       128, // heco
       256, // heco testnet
       1666600000, // harmony
-      1666700000 // harmony testnet
-    ]
+      1666700000, // harmony testnet
+    ],
   });
 
   const RPC = {
@@ -67,23 +70,23 @@ const ConnectMintButton = (props: any) => {
     HECO: 'https://http-mainnet.hecochain.com',
     HECO_TESTNET: 'https://http-testnet.hecochain.com',
     HARMONY: 'https://explorer.harmony.one',
-    HARMONY_TESTNET: 'https://explorer.pops.one'
- }
+    HARMONY_TESTNET: 'https://explorer.pops.one',
+  };
 
   const walletconnect = new WalletConnectConnector({
     rpc: { 1: RPC.MAINNET, 5: RPC.GOERLI, 137: RPC.MATIC },
-    bridge: "https://bridge.walletconnect.org",
-    qrcode: true
+    bridge: 'https://bridge.walletconnect.org',
+    qrcode: true,
   });
 
   useEffect(() => {
     (async () => {
       if (account && library) {
         await library.provider.request({
-          method: "wallet_switchEthereumChain",
+          method: 'wallet_switchEthereumChain',
           params: [{ chainId: chainId }],
         });
-        const signer = library.getSigner(account).connectUnchecked()
+        const signer = library.getSigner(account).connectUnchecked();
         const epsContract = new ethers.Contract(epsAddress, epsAbi, signer);
         const epsAddresses = await epsContract.getAddresses(account, passAddress, 1, true, true);
         setColdwallets(epsAddresses);
@@ -182,13 +185,33 @@ const ConnectMintButton = (props: any) => {
         handler={handleOpen}
         className="degen-modal color-[#05C4B5] w-inherit z-0 m-0 h-full w-full min-w-fit max-w-fit bg-[#020406]/[.85] md:h-auto md:w-auto md:bg-transparent"
       >
+        <DialogHeader className="top-0 z-10 justify-center p-0 md:absolute md:-translate-y-2/4">
+          <Image
+            priority
+            width={600}
+            height={600}
+            alt="modal_header"
+            src={modalHeaderImg}
+            className="w-28 md:w-[var(--modal-head-size)]"
+          />
+        </DialogHeader>
         <DialogBody
           className={`modal-title w-2/3 pt-[var(--modal-head-offset)] text-center text-2xl font-normal text-[#7ed4ff] `}
         >
-          <DialogButton style={{width: "320px"}} color="white" onClick={() => connectWallet('Metamask')}>
+          <span>Connect with:</span>
+
+          <DialogButton
+            style={{ width: '320px', textTransform: 'capitalize' }}
+            color="white"
+            onClick={() => connectWallet('Metamask')}
+          >
             Metamask
           </DialogButton>
-          <DialogButton style={{width: "320px"}} color="white" onClick={() => connectWallet('Walletconnect')}>
+          <DialogButton
+            style={{ width: '320px', textTransform: 'capitalize' }}
+            color="white"
+            onClick={() => connectWallet('Walletconnect')}
+          >
             WalletConnect
           </DialogButton>
         </DialogBody>
