@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 
 import degen from '@/public/images/img_degen_new.png';
 import logo from '@/public/images/logo/webaverse_logo.png';
-import ConnectMintButton from '@/ui/bars/ConnectMintButton';
+// import ConnectMintButton from '@/ui/bars/ConnectMintButton';
 import SocialBar from '@/ui/bars/SocialBar';
 import MintDialog from '@/ui/dialog/MintDialog';
 import { AppContext } from '@/ui/hooks/AccountProvider';
@@ -31,7 +31,7 @@ export default function Page() {
             Degens
             <span className='text-3xl sm:text-3xl lg:text-5xl'>of The Street</span>
           </h1>
-          <ConnectMintButton openModal={handleOpen} />
+          <p style={{textAlign: "center"}}>MINT IS CLOSED</p>
           <SocialBar />
         </div>
         <Image
